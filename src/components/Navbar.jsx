@@ -52,7 +52,7 @@ const Navbar = () => {
 
   return (
     <div className="absolute w-full h-[70px] bg-white top-[38px] px-5 xl:px-6 2xl:px-20">
-      <div className="menu absolute h-screen top-[70px] left-0 w-0 bg-white">
+      <div className="menu lg:hidden absolute h-screen top-[70px] left-0 w-0 bg-white">
         <div className="menu-elements flex flex-col gap-6 p-6">
           <div className="font-[satoshi-medium] text-[16px]">
             Shop
