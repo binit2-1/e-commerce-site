@@ -1,2 +1,11 @@
 @import "tailwindcss";
 
+@font-face {
+    font-family: satoshi-light;
+    src: url(../src/assets/fonts/Satoshi-Light.ttf);
+}
+
+@font-face {
+    font-family: satoshi-regular;
+    src: url(../src/assets/fonts/Satoshi-Regular.ttf);
+}
