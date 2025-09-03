@@ -1,10 +1,16 @@
 import React from 'react'
+import { Route, Routes } from 'react-router-dom'
+import Homepage from './pages/Homepage'
+import CategoryPage from './pages/CategoryPage'
+import ProductDetailPage from './pages/ProductDetailPage'
 
 const App = () => {
   return (
-    <div className='w-full h-screen flex items-center justify-center bg-zinc-900'>
-      <div className='text-7xl text-center font-mono'>Hi React, Vite and Tailwind</div>
-    </div>
+    <Routes>
+      <Route path='/' element={<Homepage />} />
+      <Route path='/category' element={<CategoryPage />} />
+      <Route path='/product' element={<ProductDetailPage />} />
+    </Routes>
   )
 }
 
