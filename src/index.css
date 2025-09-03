@@ -9,3 +9,13 @@
     font-family: satoshi-regular;
     src: url(../src/assets/fonts/Satoshi-Regular.ttf);
 }
+
+@font-face {
+    font-family: satoshi-medium;
+    src: url(../src/assets/fonts/Satoshi-Medium.ttf);
+}
+
+@font-face {
+    font-family: neue-montreal-bold;
+    src: url(../src/assets/fonts/PPNeueMontreal-Bold.otf);
+}
