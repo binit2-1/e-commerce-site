@@ -84,17 +84,17 @@ const Navbar = () => {
         </div>
 
         <div className="hidden lg:flex xl:flex 2xl:flex gap-3 lg:gap-4 xl:gap-5 2xl:gap-12">
-          <div className="font-[satoshi-medium] lg:text-[12px] xl:text-[13px] 2xl:text-[15px]">
+          <div className="font-[satoshi-medium] lg:text-[12px] xl:text-[13px] 2xl:text-[15px] cursor-pointer">
             Shop
             <img src={dropdown} alt="dropdown" className="inline-block ml-1" />
           </div>
-          <div className="font-[satoshi-medium] lg:text-[12px] xl:text-[13px] 2xl:text-[15px]">
+          <div className="font-[satoshi-medium] lg:text-[12px] xl:text-[13px] 2xl:text-[15px] cursor-pointer">
             On Sale
           </div>
-          <div className="font-[satoshi-medium] lg:text-[12px] xl:text-[13px] 2xl:text-[15px]">
+          <div className="font-[satoshi-medium] lg:text-[12px] xl:text-[13px] 2xl:text-[15px] cursor-pointer">
             New Arrivals
           </div>
-          <div className="font-[satoshi-medium] lg:text-[12px] xl:text-[13px] 2xl:text-[15px]">
+          <div className="font-[satoshi-medium] lg:text-[12px] xl:text-[13px] 2xl:text-[15px] cursor-pointer">
             Brands
           </div>
         </div>
@@ -115,10 +115,10 @@ const Navbar = () => {
           <img
             src={magnifyingGlass}
             alt="Search"
-            className="lg:hidden xl:hidden 2xl:hidden w-5 h-5"
+            className="lg:hidden xl:hidden 2xl:hidden w-5 h-5 cursor-pointer"
           />
-          <img src={cart} alt="cart" />
-          <img src={pfp} alt="pfp" />
+          <img src={cart} alt="cart" className="w-5 h-5 cursor-pointer" />
+          <img src={pfp} alt="pfp" className="w-5 h-5 cursor-pointer" />
         </div>
       </div>
     </div>
