@@ -16,6 +16,12 @@
 }
 
 @font-face {
+    font-family: satoshi-bold;
+    src: url(../src/assets/fonts/Satoshi-Bold.ttf);
+}
+
+@font-face {
     font-family: neue-montreal-bold;
     src: url(../src/assets/fonts/PPNeueMontreal-Bold.otf);
 }
+
