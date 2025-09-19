@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import magnifyingGlass from "../assets/imgs/magnifyingGlass.svg";
 import cart from "../assets/imgs/cart.svg";
 import pfp from "../assets/imgs/pfp.svg";
@@ -9,72 +9,64 @@ import gsap from "gsap";
 const Navbar = () => {
   const [menuIsOpen, setMenuIsOpen] = useState(false);
 
-  useEffect(() => {
-    gsap.set('.menu-elements', { x: -180 });
-  }, []);
-
   const hamburgerOnClick = () => {
+    console.log("Hamburger clicked - opening menu");
     const tl = gsap.timeline();
-    tl.to(
-      ".menu",
-      {
-        width: "50%",
-        duration: 0.3,
-        ease: "power2.inOut",
-      },
-      []
-    );
-    tl.to('.menu-elements',{
-      x: -3,
+    
+    // Animate menu only
+    tl.to(".menu", {
+      width: "50%",
+      duration: 0.3,
+      ease: "power2.inOut",
+    });
+    
+    tl.to('.menu-elements', {
+      x: 0,
       duration: 0.4,
       ease: "power2.inOut",
-    }, "<")
+    }, "<");
+    
     setMenuIsOpen(true);
   };
 
   const closeMenu = () => {
+    console.log("Closing menu");
     const tl = gsap.timeline();
-    tl.to('.menu-elements',{
+    
+    // Animate menu only
+    tl.to('.menu-elements', {
       x: -180,
       duration: 0.3,
       ease: "power2.inOut",
-    })
-    tl.to(
-      ".menu",
-      {
-        width: "0%",
-        duration: 0.4,
-        ease: "power2.inOut",
-      }, "<"
-    );
+    });
+    
+    tl.to(".menu", {
+      width: "0%",
+      duration: 0.4,
+      ease: "power2.inOut",
+    }, "<");
+    
     setMenuIsOpen(false);
   };
 
   return (
-    <div className="absolute w-full h-[70px] bg-white top-[38px] px-5 xl:px-6 2xl:px-20">
-      <div className="menu lg:hidden absolute h-screen top-[70px] left-0 w-0 bg-white">
-        <div className="menu-elements flex flex-col gap-6 p-6">
-          <div className="font-[satoshi-medium] text-[16px]">
-            Shop
-          </div>
-          <div className="font-[satoshi-medium] text-[16px]">
-            On Sale
-          </div>
-          <div className="font-[satoshi-medium] text-[16px]">
-            New Arrivals
-          </div>
-          <div className="font-[satoshi-medium] text-[16px]">
-            Brands
-          </div>
+    <div className="absolute w-full h-[70px] bg-white top-[38px] px-5 xl:px-6 2xl:px-20 z-40">
+      <div className="menu lg:hidden absolute h-screen top-[70px] left-0 w-0 bg-white z-50 overflow-hidden">
+        <div className="menu-elements flex flex-col gap-6 p-6" style={{ transform: 'translateX(-180px)' }}>
+          <div className="font-[satoshi-medium] text-[16px] cursor-pointer">Shop</div>
+          <div className="font-[satoshi-medium] text-[16px] cursor-pointer">On Sale</div>
+          <div className="font-[satoshi-medium] text-[16px] cursor-pointer">New Arrivals</div>
+          <div className="font-[satoshi-medium] text-[16px] cursor-pointer">Brands</div>
         </div>
       </div>
 
-      <div className="flex justify-between lg:justify-center lg:px-20 xl:justify-around 2xl:justify-around h-full w-full items-center flex-row gap-5">
+      <div className="flex justify-between lg:justify-center lg:px-20 xl:justify-around 2xl:justify-around h-full w-full items-center flex-row gap-5 relative z-50">
         <div className="flex items-center gap-4 lg:hidden xl:hidden 2xl:hidden">
           <img
             src={hamburger}
-            onClick={menuIsOpen ? closeMenu : hamburgerOnClick}
             alt="Menu"
+            onClick={menuIsOpen ? closeMenu : hamburgerOnClick}
+            className="cursor-pointer w-5 h-4"
           />
           <div className="font-[neue-montreal-bold] text-2xl">SHOP CO</div>
         </div>
