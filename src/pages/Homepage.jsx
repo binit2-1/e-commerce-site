@@ -58,9 +58,14 @@ const Homepage = () => {
         </div>
       
       {/* Right column - Image will show through */}
-      <div className='flex flex-col relative z-50'>
+      <div className='hidden lg:flex flex-col relative z-50'>
         <img src ={star} alt="Star" className="w-[104px] h-[104px] mx-160 mt-40" />
         <img src ={star} alt="Star" className="w-[56px] h-[56px] mt-48" />
+      </div>
+      {/* mobile right column - Image will show through */}
+      <div className='lg:hidden flex flex-col relative z-50'>
+        <img src ={star} alt="Star" className="w-[104px] h-[104px] mx-70 mt-10" />
+        <img src ={star} alt="Star" className="w-[56px] h-[56px] ml-5 mt-8 " />
       </div>
     </div>
   )
