@@ -10,11 +10,16 @@ import backgroundImage from './assets/imgs/landingImage.png'
 
 const App = () => {
   return (
-    <div className='w-screen h-screen bg-[#F2F0F1] relative' >
-      <img src={backgroundImage} className="absolute pt-48 top-0 left-0 w-screen h-screen object-cover z-0" />
+    <div className='w-screen h-screen relative overflow-x-auto' >
+      <img src={backgroundImage} className="hidden lg:block absolute top-[120px] left-0 w-screen h-screen object-cover z-0" />
+      <div className='w-screen h-screen absolute top-0 left-0 bg-[#f2f0f1] z-0'></div>
+      <img 
+        src={backgroundImage} 
+        className="lg:hidden block absolute top-[550px] -left-132.5 min-w-[1000px] h-auto z-0 " 
+      />
       <TopSignIn />
       <Navbar />
-      <div className="relative z-10">
+      <div className="relative z-20">
         <Routes>
           <Route path='/' element={<Homepage />} />
           <Route path='/category' element={<CategoryPage />} />
