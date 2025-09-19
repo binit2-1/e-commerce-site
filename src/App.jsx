@@ -7,6 +7,7 @@ import ProductDetailPage from './pages/ProductDetailPage'
 import TopSignIn from './components/TopSignIn'
 import Navbar from './components/Navbar'
 import backgroundImage from './assets/imgs/landingImage.png'
+import CompanyBar from './components/CompanyBar'
 
 const App = () => {
   return (
@@ -19,6 +20,7 @@ const App = () => {
       />
       <TopSignIn />
       <Navbar />
+      <CompanyBar />
       <div className="relative z-20">
         <Routes>
           <Route path='/' element={<Homepage />} />
