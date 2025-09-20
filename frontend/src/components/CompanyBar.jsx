@@ -8,7 +8,7 @@ import calvinKlein from "../assets/imgs/calvin-klein.png";
 const CompanyBar = () => {
   return (
     <div className="absolute">
-      <div className="w-screen mt-250 lg:mt-269 h-[146px] lg:h-[122px] bg-black flex items-center justify-center">
+      <div className="w-screen mt-250 lg:mt-264.5 h-[146px] lg:h-[122px] bg-black flex items-center justify-center">
         <div className="flex flex-row flex-wrap justify-center gap-10 lg:gap-32">
             <img src={versace} alt="Versace" className="w-auto h-[20px] lg:w-auto lg:h-[40px]" />
             <img src={zara} alt="Zara" className="w-auto h-[20px] lg:w-auto lg:h-[40px]" />
