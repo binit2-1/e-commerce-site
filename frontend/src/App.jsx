@@ -12,7 +12,7 @@ import CompanyBar from './components/CompanyBar'
 const App = () => {
   return (
     <div className='w-screen h-screen relative overflow-x-auto' >
-      <img src={backgroundImage} className="hidden lg:block absolute top-[120px] left-0 w-screen h-screen object-cover z-0" />
+      <img src={backgroundImage} className="hidden lg:block absolute top-[100px] left-0 w-screen h-screen object-cover z-0" />
       <div className='lg:hidden w-screen h-screen absolute top-0 left-0 bg-[#f2f0f1] z-0'></div>
       <img 
         src={backgroundImage} 
