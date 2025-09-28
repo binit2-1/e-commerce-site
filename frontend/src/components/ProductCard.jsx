@@ -9,12 +9,12 @@ const ProductCard = ({
   onAddToCart
 }) => {
   return (
-    <div className="w-72 bg-white shadow-md rounded-xl duration-500 ">
+    <div className="w-72 bg-white rounded-xl duration-500 ">
       {/* Product Image */}
       <img 
         src={image_url} 
         alt={name}
-        className="h-80 w-72 object-cover rounded-t-xl"
+        className="h-80 w-72 object-cover rounded-xl"
       />
       
       {/* Product Details */}
