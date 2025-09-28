@@ -154,9 +154,9 @@ const Homepage = () => {
       </div>
       
       {/* New Arrivals Section */}
-      <div className='absolute top-[1150px] left-0 right-0 z-10 px-6'>
-        <h2 className='text-3xl font-bold text-center mb-16'>NEW ARRIVALS</h2>
-        <div className='flex flex-cols justify-center gap-20'>
+      <div className='absolute top-[1170px] lg:top-[1150px] lg:left-0 lg:right-0 z-10 lg:px-6'>
+        <h2 className='lg:text-3xl font-bold text-center mb-6 lg:mb-16'>NEW ARRIVALS</h2>
+        <div className='flex flex-wrap gap-4 lg:flex-cols justify-center lg:gap-20'>
           {newArrivalsToDisplay.map(product => (
             <ProductCard 
               key={product.product_id} 
@@ -179,9 +179,9 @@ const Homepage = () => {
       </div>
 
       {/* Best Sellers Section */}
-      <div className='absolute top-[1950px] left-0 right-0 z-10 px-6'>
-        <h2 className='text-3xl font-bold text-center mb-16'>BEST SELLERS</h2>
-        <div className='flex flex-cols justify-center gap-20'>
+      <div className='absolute top-[1900px] lg:top-[1950px] lg:left-0 lg:right-0 z-10 lg:px-6'>
+        <h2 className='lg:text-3xl font-bold text-center mb-6 lg:mb-16'>BEST SELLERS</h2>
+        <div className='flex flex-wrap gap-4 lg:flex-cols justify-center lg:gap-20'>
           {bestSellersToDisplay.map(product => (
             <ProductCard 
               key={product.product_id} 
