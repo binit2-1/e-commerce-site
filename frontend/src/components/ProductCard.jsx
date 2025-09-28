@@ -9,7 +9,7 @@ const ProductCard = ({
   onAddToCart
 }) => {
   return (
-    <div className="w-72 bg-white shadow-md rounded-xl duration-500 hover:scale-105 hover:shadow-xl">
+    <div className="w-72 bg-white shadow-md rounded-xl duration-500 ">
       {/* Product Image */}
       <img 
         src={image_url} 
