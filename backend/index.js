@@ -3,7 +3,9 @@ const cors = require('cors');
 
 
 const app = express();
-const getProductsRouter = require('./routes/getProducts');
+const getAllProductsRouter = require('./routes/getProducts');
+const getNewArrivalsRouter = require('./routes/getNewArrivals');
+const getBestSellersRouter = require('./routes/getBestSeller');
 const port = process.env.PORT || 3000;
 
 app.use(cors({
@@ -13,7 +15,9 @@ app.use(cors({
     credentials: true
 }));
 app.use(express.json());
-app.use('/api/products', getProductsRouter);
+app.use('/api/products', getAllProductsRouter);
+app.use('/api/products/new-arrivals', getNewArrivalsRouter);
+app.use('/api/products/best-sellers', getBestSellersRouter);
 
 app.listen(port, () => {
     console.log(`Server is running on http://localhost:${port}`);
