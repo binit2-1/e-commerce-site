@@ -208,7 +208,7 @@ const Homepage = () => {
             ))}
           </div>
           <div className="flex justify-center mt-10">
-            <button className="bg-transparent justify-center border-[1px] border-gray-200 rounded-[200px] text-sm p-3 font-[satoshi-regular] cursor-pointer">
+            <button className="bg-transparent justify-center border-[1px] border-gray-200 rounded-[200px] text-sm p-3 font-[satoshi-regular]`">
               {" "}
               View All{" "}
             </button>
