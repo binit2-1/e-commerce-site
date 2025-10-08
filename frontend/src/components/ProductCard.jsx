@@ -26,7 +26,7 @@ const ProductCard = ({
   };
 
   return (
-    <div className="w-40 sm:w-48 md:w-60 lg:w-72 bg-white rounded-xl duration-500 hover:scale-105 hover:shadow-xl">
+    <div className="w-40 sm:w-48 md:w-60 lg:w-72 bg-white rounded-xl ">
       {/* Product Image */}
       <img 
         src={image_url} 
