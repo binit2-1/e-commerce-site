@@ -8,6 +8,7 @@ import formalImage from "../assets/imgs/formal.png";
 import partyImage from "../assets/imgs/party.png";
 import gymImage from "../assets/imgs/gym.png"; 
 import Testimonial from "../components/Testimonial";
+import Footer from "../components/Footer";
 
 const Homepage = () => {
   const [products, setProducts] = useState([]);
@@ -317,7 +318,11 @@ const Homepage = () => {
       </div>
       {/*Testimonials Section*/}
       <Testimonial />
+      <footer>
+        <Footer />
+      </footer>
     </div>
+    
   );
 };
 
