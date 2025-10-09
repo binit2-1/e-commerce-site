@@ -6,6 +6,7 @@ import ProductDetailPage from "./pages/ProductDetailPage";
 import TopSignIn from "./components/TopSignIn";
 import Navbar from "./components/Navbar";
 import CartPage from "./pages/CartPage";
+import TestimonialCard from "./components/ui/TestimonialCard";
 
 const App = () => {
   return (
@@ -14,6 +15,7 @@ const App = () => {
         <TopSignIn />
         <Navbar />
       </div>
+      
 
       <div className="relative z-20">
         <Routes>

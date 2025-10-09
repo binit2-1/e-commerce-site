@@ -7,6 +7,7 @@ import casualImage from "../assets/imgs/casual.png";
 import formalImage from "../assets/imgs/formal.png";
 import partyImage from "../assets/imgs/party.png";
 import gymImage from "../assets/imgs/gym.png"; 
+import Testimonial from "../components/Testimonial";
 
 const Homepage = () => {
   const [products, setProducts] = useState([]);
@@ -252,6 +253,8 @@ const Homepage = () => {
           </div>
         </div>
       </div>
+
+      {/* Browse by Dress Style Section */}
       <div className="flex justify-center">
         <div className="lg:h-[866px] lg:w-[1410px] h-[975px] w-[340px] bg-[#F0F0F0] rounded-2xl lg:mt-[1800px] mt-[1670px] mb-[100px]">
           <div className="flex justify-center font-[neue-montreal-bold] mt-12 lg:mt-20 text-2xl lg:text-6xl px-16 lg:px-0 text-center">
@@ -312,6 +315,8 @@ const Homepage = () => {
           </div>
         </div>
       </div>
+      {/*Testimonials Section*/}
+      <Testimonial />
     </div>
   );
 };
