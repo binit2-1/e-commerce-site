@@ -6,6 +6,7 @@ import dropdown from "../../assets/imgs/dropdown.svg";
 import hamburger from "../../assets/imgs/hamburger.svg";
 import magnifyingGlass from "../../assets/imgs/magnifyingGlass.svg";
 import pfp from "../../assets/imgs/pfp.svg";
+import { useCart } from "../../features/cart/useCart";
 import Container from "./Container";
 
 const links = [
@@ -19,6 +20,7 @@ const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [query, setQuery] = useState("");
   const navigate = useNavigate();
+  const { count } = useCart();
 
   const onSearch = (e: FormEvent) => {
     e.preventDefault();
@@ -71,6 +73,11 @@ const Navbar = () => {
           </Link>
           <Link to={paths.cart} aria-label="Cart" className="relative">
             <img src={cart} alt="" className="h-6 w-6" />
+            {count > 0 && (
+              <span className="absolute -right-2 -top-2 flex h-4 min-w-4 items-center justify-center rounded-full bg-black px-1 text-[10px] text-white">
+                {count}
+              </span>
+            )}
           </Link>
           <button type="button" aria-label="Account">
             <img src={pfp} alt="" className="h-6 w-6" />

@@ -9,6 +9,7 @@ export const router = createBrowserRouter([
   {
     element: <RootLayout />,
     errorElement: <ErrorPage />,
+    hydrateFallbackElement: <div className="p-10 text-center">Loading…</div>,
     children: [
       { index: true, lazy: async () => ({ Component: (await import("../pages/HomePage")).default }) },
       { path: paths.shop, lazy: async () => ({ Component: (await import("../pages/CategoryPage")).default }) },
