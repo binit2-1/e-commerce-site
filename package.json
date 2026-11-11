@@ -15,7 +15,8 @@
     "test": "vitest run",
     "db:schema": "pnpm --filter @shop/api db:schema",
     "db:seed": "pnpm --filter @shop/api db:seed",
-    "db:reset": "pnpm --filter @shop/api db:reset"
+    "db:reset": "pnpm --filter @shop/api db:reset",
+    "demo": "pnpm --filter @shop/demo dev"
   },
   "pnpm": {
     "onlyBuiltDependencies": [
@@ -23,6 +24,8 @@
     ]
   },
   "devDependencies": {
+    "playwright-core": "1.48.2",
+    "postcss": "^8.5.32",
     "vitest": "^3"
   }
 }

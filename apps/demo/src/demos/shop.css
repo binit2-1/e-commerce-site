@@ -1,0 +1,49 @@
+/* Both demos share the .sd namespace; fd-* classes are the filter demo's. */
+.sd .ss-stage { overflow: hidden; background: var(--ss-well); border-radius: 12px; }
+.sd .sd-browser { box-shadow: var(--ss-shadow-hero); }
+
+.sd .sd-page { display: flex; flex-direction: column; height: 100%; background: var(--ss-surface); padding: 0 104px 0 28px; }
+.sd .sd-nav { display: flex; align-items: center; gap: 28px; height: 52px; border-bottom: 1px solid var(--ss-hairline, rgba(0,0,0,0.08)); flex: none; }
+.sd .sd-logo { font-weight: 800; font-size: 18px; letter-spacing: -0.02em; }
+.sd .sd-links { display: flex; gap: 20px; font-size: 13px; }
+.sd .sd-cart { margin-left: auto; position: relative; display: inline-flex; padding: 4px; }
+.sd .sd-count {
+  position: absolute; top: -4px; right: -6px; min-width: 16px; height: 16px; padding: 0 4px; border-radius: 8px;
+  background: #000; color: #fff; font-size: 10px; line-height: 16px; text-align: center; opacity: 0; transition: opacity 0.25s;
+}
+.sd .sd-count[data-show="true"] { opacity: 1; }
+
+.sd .sd-views { flex: 1; min-height: 0; padding-top: 24px; }
+.sd .sd-product { display: grid; grid-template-columns: 300px 1fr; gap: 36px; }
+.sd .sd-photo { height: 220px; border-radius: 16px; background: #f0eeed; display: flex; align-items: center; justify-content: center; }
+.sd .sd-info { display: flex; flex-direction: column; align-items: stretch; gap: 12px; padding-top: 6px; }
+.sd .sd-title { font-weight: 800; font-size: 24px; letter-spacing: -0.01em; }
+.sd .sd-price { font-weight: 700; font-size: 22px; margin-top: 10px; }
+.sd .sd-label { font-size: 12px; color: rgba(0,0,0,0.55); margin-top: 10px; }
+.sd .sd-sizes { align-self: stretch; }
+.sd .sd-add { align-self: stretch; }
+
+.sd .sd-heading { font-weight: 800; font-size: 24px; margin-bottom: 16px; }
+.sd .sd-cartgrid { display: grid; grid-template-columns: 1fr 260px; gap: 16px; align-items: start; }
+.sd .sd-thumb { display: flex; width: 44px; height: 44px; border-radius: 8px; background: #f0eeed; align-items: center; justify-content: center; }
+.sd .sd-line { display: flex; justify-content: space-between; font-size: 13px; }
+.sd .sd-total { font-weight: 700; font-size: 15px; padding-top: 10px; border-top: 1px solid var(--ss-hairline, rgba(0,0,0,0.08)); }
+.sd .sd-checkout { margin-top: 4px; align-self: stretch; }
+
+.sd .sd-done { display: flex; flex-direction: column; align-items: flex-start; gap: 12px; padding-top: 4px; }
+.sd .sd-order { align-self: stretch; margin-top: 8px; }
+.sd .sd-sub { font-size: 13px; color: rgba(0,0,0,0.55); }
+
+.sd .fd-layout { flex: 1; min-height: 0; display: grid; grid-template-columns: 200px 1fr; gap: 28px; padding-top: 24px; }
+.sd .fd-filters { display: flex; flex-direction: column; align-items: stretch; gap: 12px; }
+.sd .fd-heading { font-weight: 700; font-size: 16px; }
+.sd .fd-swatches { display: flex; gap: 10px; }
+.sd .fd-swatch { width: 28px; height: 28px; border-radius: 50%; box-shadow: inset 0 0 0 1px rgba(0,0,0,0.12); transition: box-shadow 0.2s; }
+.sd .fd-swatch[data-on="true"] { box-shadow: inset 0 0 0 1px rgba(0,0,0,0.12), 0 0 0 2px #fff, 0 0 0 4px #000; }
+.sd .fd-head { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 14px; }
+.sd .fd-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+.sd .fd-card { display: flex; flex-direction: column; gap: 4px; }
+.sd .fd-img { height: 150px; border-radius: 14px; background: #f0eeed; display: flex; align-items: center; justify-content: center; margin-bottom: 4px; }
+.sd .fd-name { font-weight: 700; font-size: 13px; }
+.sd .fd-price { font-size: 13px; }
+.sd .fd-grid { width: 544px; }
