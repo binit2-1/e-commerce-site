@@ -1,5 +1,4 @@
 import { paths } from "../app/paths";
-import Footer from "../components/layout/Footer";
 import CompanyBar from "../features/home/components/CompanyBar";
 import DressStyleSection from "../features/home/components/DressStyleSection";
 import Hero from "../features/home/components/Hero";
@@ -30,7 +29,6 @@ const HomePage = () => {
 
       <DressStyleSection />
       <Testimonial />
-      <Footer />
     </>
   );
 };
