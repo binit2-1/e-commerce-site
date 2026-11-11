@@ -10,10 +10,11 @@ export function useReviews(productId: number | string) {
   const [sort, setSortState] = useState<ReviewQuery["sort"]>("latest");
   const [page, setPage] = useState(1);
   const [items, setItems] = useState<Review[]>([]);
+  const [nonce, setNonce] = useState(0);
 
   const { data, loading, error } = useApi(
     (signal) => fetchReviews(productId, { sort, page, pageSize: PAGE_SIZE }, signal),
-    `${productId}:${sort}:${page}`,
+    `${productId}:${sort}:${page}:${nonce}`,
   );
 
   useEffect(() => {
@@ -26,6 +27,12 @@ export function useReviews(productId: number | string) {
     setPage(1);
   }, []);
 
+  /** Start over from page 1 (after posting a review). */
+  const refresh = useCallback(() => {
+    setPage(1);
+    setNonce((n) => n + 1);
+  }, []);
+
   const total = data?.total ?? 0;
   return {
     items,
@@ -34,6 +41,7 @@ export function useReviews(productId: number | string) {
     error,
     sort,
     setSort,
+    refresh,
     hasMore: items.length < total,
     loadMore: () => setPage((p) => p + 1),
   };

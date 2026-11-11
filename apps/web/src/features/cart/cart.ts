@@ -1,12 +1,7 @@
-export interface CartItem {
-  productId: number;
-  name: string;
-  image: string;
-  price: number;
-  size: string;
-  color: string;
-  quantity: number;
-}
+import { DELIVERY_FEE, MAX_QUANTITY, PROMO_CODES, computeTotals, type CartLine } from "@shop/shared";
+
+export { DELIVERY_FEE, MAX_QUANTITY, PROMO_CODES };
+export type CartItem = CartLine;
 
 export interface CartState {
   items: CartItem[];
@@ -19,12 +14,8 @@ export type CartAction =
   | { type: "remove"; key: string }
   | { type: "applyPromo"; code: string }
   | { type: "clearPromo" }
+  | { type: "replace"; items: CartItem[] }
   | { type: "clear" };
-
-export const MAX_QUANTITY = 10;
-export const DELIVERY_FEE = 15;
-/** Demo promo codes: code -> percent off the subtotal. */
-export const PROMO_CODES: Record<string, number> = { SHOP20: 20 };
 
 export const initialCartState: CartState = { items: [], promoCode: null };
 
@@ -57,19 +48,16 @@ export function cartReducer(state: CartState, action: CartAction): CartState {
     }
     case "clearPromo":
       return { ...state, promoCode: null };
+    case "replace":
+      return { ...state, items: action.items.map((i) => ({ ...i, quantity: clampQty(i.quantity) })) };
     case "clear":
       return initialCartState;
   }
 }
 
-const cents = (n: number) => Math.round(n * 100) / 100;
-
 export function selectTotals(state: CartState) {
-  const subtotal = cents(state.items.reduce((sum, i) => sum + i.price * i.quantity, 0));
-  const discountPercent = state.promoCode ? (PROMO_CODES[state.promoCode] ?? 0) : 0;
-  const discount = cents((subtotal * discountPercent) / 100);
-  const delivery = state.items.length > 0 ? DELIVERY_FEE : 0;
-  return { subtotal, discountPercent, discount, delivery, total: cents(subtotal - discount + delivery) };
+  const subtotal = state.items.reduce((sum, i) => sum + i.price * i.quantity, 0);
+  return computeTotals(subtotal, state.items.length > 0, state.promoCode);
 }
 
 export const selectCount = (state: CartState) => state.items.reduce((n, i) => n + i.quantity, 0);

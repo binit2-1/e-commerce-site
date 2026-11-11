@@ -83,3 +83,9 @@ export const reviewQuerySchema = z.object({
 export type ReviewQuery = z.infer<typeof reviewQuerySchema>;
 
 export const productIdSchema = z.coerce.number().int().positive();
+
+export const reviewInputSchema = z.object({
+  rating: z.number().int().min(1, "Pick a rating").max(5),
+  body: z.string().trim().min(5, "Write at least a few words").max(1000),
+});
+export type ReviewInput = z.infer<typeof reviewInputSchema>;

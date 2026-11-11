@@ -1,4 +1,5 @@
 import { createBrowserRouter } from "react-router-dom";
+import RequireAuth from "../features/auth/RequireAuth";
 import ErrorPage from "../pages/ErrorPage";
 import NotFoundPage from "../pages/NotFoundPage";
 import { paths } from "./paths";
@@ -18,6 +19,16 @@ export const router = createBrowserRouter([
         lazy: async () => ({ Component: (await import("../pages/ProductDetailPage")).default }),
       },
       { path: paths.cart, lazy: async () => ({ Component: (await import("../pages/CartPage")).default }) },
+      { path: paths.login, lazy: async () => ({ Component: (await import("../pages/LoginPage")).default }) },
+      { path: paths.register, lazy: async () => ({ Component: (await import("../pages/RegisterPage")).default }) },
+      {
+        element: <RequireAuth />,
+        children: [
+          { path: paths.checkout, lazy: async () => ({ Component: (await import("../pages/CheckoutPage")).default }) },
+          { path: paths.orders, lazy: async () => ({ Component: (await import("../pages/OrdersPage")).default }) },
+          { path: paths.order(), lazy: async () => ({ Component: (await import("../pages/OrderDetailPage")).default }) },
+        ],
+      },
       { path: "*", element: <NotFoundPage /> },
     ],
   },

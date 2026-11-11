@@ -6,6 +6,7 @@ import dropdown from "../../assets/imgs/dropdown.svg";
 import hamburger from "../../assets/imgs/hamburger.svg";
 import magnifyingGlass from "../../assets/imgs/magnifyingGlass.svg";
 import pfp from "../../assets/imgs/pfp.svg";
+import { useAuth } from "../../features/auth/useAuth";
 import { useCart } from "../../features/cart/useCart";
 import Container from "./Container";
 
@@ -21,6 +22,14 @@ const Navbar = () => {
   const [query, setQuery] = useState("");
   const navigate = useNavigate();
   const { count } = useCart();
+  const { user, logout } = useAuth();
+  const [accountOpen, setAccountOpen] = useState(false);
+
+  const onLogout = async () => {
+    setAccountOpen(false);
+    await logout();
+    navigate(paths.home);
+  };
 
   const onSearch = (e: FormEvent) => {
     e.preventDefault();
@@ -80,9 +89,37 @@ const Navbar = () => {
               </span>
             )}
           </Link>
-          <button type="button" aria-label="Account">
-            <img src={pfp} alt="" className="h-6 w-6" />
-          </button>
+          {user ? (
+            <div className="relative">
+              <button
+                type="button"
+                aria-label="Account menu"
+                aria-expanded={accountOpen}
+                onClick={() => setAccountOpen((v) => !v)}
+                onKeyDown={(e) => e.key === "Escape" && setAccountOpen(false)}
+              >
+                <img src={pfp} alt="" className="h-6 w-6" />
+              </button>
+              {accountOpen && (
+                <div
+                  role="menu"
+                  className="absolute right-0 top-9 z-50 w-48 rounded-[20px] border border-line bg-white p-2 shadow-lg"
+                >
+                  <p className="truncate px-3 py-2 text-sm text-muted">Hi, {user.name.split(" ")[0]}</p>
+                  <Link role="menuitem" to={paths.orders} onClick={() => setAccountOpen(false)} className="block rounded-lg px-3 py-2 hover:bg-surface">
+                    My orders
+                  </Link>
+                  <button role="menuitem" type="button" onClick={onLogout} className="block w-full rounded-lg px-3 py-2 text-left hover:bg-surface">
+                    Log out
+                  </button>
+                </div>
+              )}
+            </div>
+          ) : (
+            <Link to={paths.login} aria-label="Log in" title="Log in">
+              <img src={pfp} alt="" className="h-6 w-6" />
+            </Link>
+          )}
         </div>
         </div>
       </Container>

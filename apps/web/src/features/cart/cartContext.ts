@@ -12,6 +12,8 @@ export interface CartContextValue {
   applyPromo: (code: string) => boolean;
   clearPromo: () => void;
   clear: () => void;
+  /** Push the current cart to the server immediately (logged-in users). */
+  syncNow: () => Promise<void>;
 }
 
 export const CartContext = createContext<CartContextValue | null>(null);

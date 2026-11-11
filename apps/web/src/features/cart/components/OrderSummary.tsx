@@ -1,4 +1,6 @@
 import { useState, type FormEvent } from "react";
+import { useNavigate } from "react-router-dom";
+import { paths } from "../../../app/paths";
 import { ArrowRight, Tag } from "../../../components/icons";
 import Button from "../../../components/ui/Button";
 import { formatPrice } from "../../../lib/format";
@@ -15,7 +17,7 @@ const OrderSummary = () => {
   const { totals, state, applyPromo, clearPromo, count } = useCart();
   const [code, setCode] = useState("");
   const [promoError, setPromoError] = useState(false);
-  const [checkoutNote, setCheckoutNote] = useState(false);
+  const navigate = useNavigate();
 
   const onApply = (e: FormEvent) => {
     e.preventDefault();
@@ -74,12 +76,9 @@ const OrderSummary = () => {
         )}
       </p>
 
-      <Button full disabled={count === 0} onClick={() => setCheckoutNote(true)} className="mt-4 flex items-center justify-center gap-3 py-4">
+      <Button full disabled={count === 0} onClick={() => navigate(paths.checkout)} className="mt-4 flex items-center justify-center gap-3 py-4">
         Go to Checkout <ArrowRight width={20} height={20} />
       </Button>
-      <p className="mt-2 min-h-5 text-center text-sm text-muted" aria-live="polite">
-        {checkoutNote && "Checkout isn't available in this demo yet."}
-      </p>
     </section>
   );
 };

@@ -1,9 +1,14 @@
 import { REVIEW_SORTS, type Review, type ReviewQuery } from "@shop/shared";
+import { useState } from "react";
+import { Link, useLocation } from "react-router-dom";
+import { paths } from "../../../app/paths";
 import { Check, Sliders } from "../../../components/icons";
 import Button from "../../../components/ui/Button";
 import StarRating from "../../../components/ui/StarRating";
 import { formatDate } from "../../../lib/format";
+import { useAuth } from "../../auth/useAuth";
 import { useReviews } from "../hooks/useReviews";
+import ReviewForm from "./ReviewForm";
 
 const sortLabels: Record<ReviewQuery["sort"], string> = { latest: "Latest", oldest: "Oldest", rating: "Top rated" };
 
@@ -22,7 +27,10 @@ const ReviewCard = ({ review }: { review: Review }) => (
 );
 
 const ReviewList = ({ productId }: { productId: number }) => {
-  const { items, total, loading, error, sort, setSort, hasMore, loadMore } = useReviews(productId);
+  const { items, total, loading, error, sort, setSort, refresh, hasMore, loadMore } = useReviews(productId);
+  const { user } = useAuth();
+  const location = useLocation();
+  const [writing, setWriting] = useState(false);
 
   return (
     <div>
@@ -49,8 +57,31 @@ const ReviewList = ({ productId }: { productId: number }) => {
               </option>
             ))}
           </select>
+          {user ? (
+            <Button onClick={() => setWriting((v) => !v)} className="h-11 px-5 py-0 text-sm">
+              Write a Review
+            </Button>
+          ) : (
+            <Link
+              to={`${paths.login}?next=${encodeURIComponent(location.pathname)}`}
+              className="flex h-11 items-center rounded-full bg-black px-5 text-sm text-white"
+            >
+              Log in to review
+            </Link>
+          )}
         </div>
       </div>
+
+      {writing && (
+        <ReviewForm
+          productId={productId}
+          onCancel={() => setWriting(false)}
+          onPosted={() => {
+            setWriting(false);
+            refresh();
+          }}
+        />
+      )}
 
       {error && items.length === 0 ? (
         <p className="mt-6 rounded-[20px] bg-surface p-6 text-center">Couldn&apos;t load reviews.</p>

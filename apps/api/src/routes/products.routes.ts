@@ -7,6 +7,8 @@ import {
   getProducts,
   getRelatedProducts,
 } from "../controllers/products.controller.js";
+import { createReview } from "../controllers/reviews.controller.js";
+import { requireAuth } from "../middleware/auth.js";
 
 const router = Router();
 
@@ -16,6 +18,7 @@ router.get("/best-sellers", getBestSellers);
 router.get("/", getProducts);
 router.get("/:id/related", getRelatedProducts);
 router.get("/:id/reviews", getProductReviews);
+router.post("/:id/reviews", requireAuth, createReview);
 router.get("/:id", getProduct);
 
 export default router;
