@@ -5,6 +5,8 @@ import pfp from "../../assets/imgs/pfp.svg";
 import dropdown from "../../assets/imgs/dropdown.svg";
 import hamburger from "../../assets/imgs/hamburger.svg";
 import gsap from "gsap";
+import { Link } from "react-router-dom";
+import { paths } from "../../app/paths";
 
 const Navbar = () => {
   const [menuIsOpen, setMenuIsOpen] = useState(false);
@@ -53,7 +55,7 @@ const Navbar = () => {
     <div className="absolute w-full h-[70px] bg-white top-[38px] px-5 xl:px-6 2xl:px-20 z-40">
       <div className="menu lg:hidden absolute h-screen top-[70px] left-0 w-0 bg-white z-50 overflow-hidden">
         <div className="menu-elements flex flex-col gap-6 p-6" style={{ transform: 'translateX(-180px)' }}>
-          <div className="font-[satoshi-medium] text-[16px] cursor-pointer">Shop</div>
+          <Link to={paths.shop} onClick={closeMenu} className="font-[satoshi-medium] text-[16px] cursor-pointer">Shop</Link>
           <div className="font-[satoshi-medium] text-[16px] cursor-pointer">On Sale</div>
           <div className="font-[satoshi-medium] text-[16px] cursor-pointer">New Arrivals</div>
           <div className="font-[satoshi-medium] text-[16px] cursor-pointer">Brands</div>
@@ -68,18 +70,18 @@ const Navbar = () => {
             onClick={menuIsOpen ? closeMenu : hamburgerOnClick}
             className="cursor-pointer w-5 h-4"
           />
-          <div className="font-[neue-montreal-bold] text-2xl">SHOP CO</div>
+          <Link to={paths.home} className="font-[neue-montreal-bold] text-2xl">SHOP CO</Link>
         </div>
 
-        <div className="hidden lg:block xl:block 2xl:block font-[neue-montreal-bold] lg:text-xl xl:text-2xl 2xl:text-3xl">
+        <Link to={paths.home} className="hidden lg:block xl:block 2xl:block font-[neue-montreal-bold] lg:text-xl xl:text-2xl 2xl:text-3xl">
           SHOP CO
-        </div>
+        </Link>
 
         <div className="hidden lg:flex xl:flex 2xl:flex gap-3 lg:gap-4 xl:gap-5 2xl:gap-12">
-          <div className="font-[satoshi-medium] lg:text-[12px] xl:text-[13px] 2xl:text-[15px] cursor-pointer">
+          <Link to={paths.shop} className="font-[satoshi-medium] lg:text-[12px] xl:text-[13px] 2xl:text-[15px] cursor-pointer">
             Shop
             <img src={dropdown} alt="dropdown" className="inline-block ml-1" />
-          </div>
+          </Link>
           <div className="font-[satoshi-medium] lg:text-[12px] xl:text-[13px] 2xl:text-[15px] cursor-pointer">
             On Sale
           </div>
@@ -109,7 +111,9 @@ const Navbar = () => {
             alt="Search"
             className="lg:hidden xl:hidden 2xl:hidden w-5 h-5 cursor-pointer"
           />
-          <img src={cart} alt="cart" className="w-5 h-5 cursor-pointer" />
+          <Link to={paths.cart}>
+            <img src={cart} alt="cart" className="w-5 h-5 cursor-pointer" />
+          </Link>
           <img src={pfp} alt="pfp" className="w-5 h-5 cursor-pointer" />
         </div>
       </div>
