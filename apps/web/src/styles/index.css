@@ -1,0 +1,27 @@
+@import "tailwindcss";
+
+@font-face {
+    font-family: satoshi-light;
+    src: url(../assets/fonts/Satoshi-Light.ttf);
+}
+
+@font-face {
+    font-family: satoshi-regular;
+    src: url(../assets/fonts/Satoshi-Regular.ttf);
+}
+
+@font-face {
+    font-family: satoshi-medium;
+    src: url(../assets/fonts/Satoshi-Medium.ttf);
+}
+
+@font-face {
+    font-family: satoshi-bold;
+    src: url(../assets/fonts/Satoshi-Bold.ttf);
+}
+
+@font-face {
+    font-family: neue-montreal-bold;
+    src: url(../assets/fonts/PPNeueMontreal-Bold.otf);
+}
+
