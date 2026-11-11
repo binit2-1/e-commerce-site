@@ -25,3 +25,31 @@
     src: url(../assets/fonts/PPNeueMontreal-Bold.otf);
 }
 
+
+@theme {
+  --font-display: neue-montreal-bold, sans-serif;
+  --font-body: satoshi-regular, sans-serif;
+  --font-body-light: satoshi-light, sans-serif;
+  --font-body-medium: satoshi-medium, sans-serif;
+  --font-body-bold: satoshi-bold, sans-serif;
+
+  --color-ink: #000008;
+  --color-card: #f0eeed;
+  --color-surface: #f0f0f0;
+  --color-hero: #f2f0f1;
+  --color-line: #0000001a;
+  --color-muted: #00000099;
+  --color-sale: #ff3333;
+  --color-sale-bg: #ff33331a;
+  --color-star: #ffc633;
+
+  --container-page: 77.5rem;
+}
+
+@layer base {
+  body {
+    font-family: var(--font-body);
+    color: var(--color-ink);
+    background: #fff;
+  }
+}

@@ -58,6 +58,7 @@ const optionalNumber = z
   .pipe(z.number().nonnegative().optional());
 
 export const productQuerySchema = z.object({
+  q: z.string().trim().max(100).optional(),
   type: z.string().optional(),
   style: z.string().optional(),
   minPrice: optionalNumber,

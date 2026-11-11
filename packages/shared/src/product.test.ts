@@ -3,6 +3,7 @@ import { productQuerySchema, reviewQuerySchema } from "./product";
 
 describe("productQuerySchema", () => {
   it("applies defaults for an empty query", () => {
+    expect(productQuerySchema.parse({ q: " shirt " }).q).toBe("shirt");
     expect(productQuerySchema.parse({})).toEqual({
       colors: [],
       sizes: [],

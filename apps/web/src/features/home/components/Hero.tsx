@@ -1,111 +1,48 @@
-import star from "../../../assets/imgs/star.png";
+import { Link } from "react-router-dom";
+import { paths } from "../../../app/paths";
+import landingImage from "../../../assets/imgs/landingImage.png";
+import Container from "../../../components/layout/Container";
 
-/** Renders grid children for the hero; must be placed inside the hero grid container. */
-const Hero = () => {
-  return (
-    <>
-        {/* Left column - Text content */}
-        <div className="flex flex-col relative z-20">
-          <h1 className="pl-3 pt-4 text-[36px] leading-9  lg:leading-none lg:text-6xl text-black lg:px-40 lg:pt-20 lg:m-4 font-[neue-montreal-bold]">
-            FIND CLOTHES <br /> THAT MATCHES <br /> YOUR STYLE
-          </h1>
-          <p className="hidden lg:block lg:text-lg  text-gray-700  lg:px-40 lg:m-4 font-[satoshi-light]">
-            Browse through our diverse range of meticulously crafted garments,
-            designed <br />
-            to bring out your individuality and cater to your sense of style.
-          </p>
-          <p className="lg:hidden text-[14px] pt-4 text-gray-700 px-3 lg:m-4 font-[satoshi-light]">
-            Browse through our diverse range of meticulously crafted
-            <br />
-            garments, designed to bring out your individuality and
-            <br />
-            cater to your sense of style.
-          </p>
-          <button className="lg:w-[180px] w-[390px] h-[50px] mx-auto my-5 lg:h-[50px] cursor-pointer bg-black text-white lg:text-lg font-[satoshi-medium] rounded-4xl lg:ml-44 lg:mt-4">
-            Shop Now
-          </button>
-          {/* large screen interface */}
-          <div className="hidden lg:flex flex-row ml-20 items-center">
-            <div className="flex flex-col">
-              <h2 className="text-4xl text-black pl-32 pt-20 -ml-7 font-[satoshi-bold]">
-                200+
-              </h2>
-              <p className="text-md text-gray-700 pl-32 -ml-7 font-[satoshi-light]">
-                International Brands
-              </p>
-            </div>
-            <hr className="border-l-2 border-gray-300 h-20 ml-8 mt-18" />
-            <div className="flex flex-col">
-              <h2 className="text-4xl text-black pl-8 pt-20 font-[satoshi-bold]">
-                2,000+
-              </h2>
-              <p className="text-md text-gray-700 pl-8 font-[satoshi-light]">
-                High-Quality Products
-              </p>
-            </div>
-            <hr className="border-l-2 border-gray-300 h-20 ml-8 mt-18" />
-            <div className="flex flex-col">
-              <h2 className="text-4xl text-black pl-8 pt-20 font-[satoshi-bold]">
-                30,000+
-              </h2>
-              <p className="text-md text-gray-700 pl-8 font-[satoshi-light]">
-                Happy Customers
-              </p>
-            </div>
-          </div>
-        </div>
-        {/* mobile interface */}
-        <div className="flex flex-col lg:hidden -ml-5 items-center justify-center">
-          <div className="flex flex-row ">
-            <div className="flex flex-col">
-              <h2 className="text-[24px] text-black pl-14 pt-5 -ml-7 font-[satoshi-bold]">
-                200+
-              </h2>
-              <p className="text-[12px] text-gray-700 pl-14 -ml-7 font-[satoshi-light]">
-                International Brands
-              </p>
-            </div>
-            <hr className="border-l-2 border-gray-300 h-15 ml-8 mt-3" />
-            <div className="flex flex-col">
-              <h2 className="text-[24px] text-black pl-8 pt-5 font-[satoshi-bold]">
-                2,000+
-              </h2>
-              <p className="text-[12px] text-gray-700 pl-8 font-[satoshi-light]">
-                High-Quality Products
-              </p>
-            </div>
-          </div>
-          <div className="flex flex-col items-center">
-            <h2 className="text-[24px] text-black pt-5 pl-6 font-[satoshi-bold]">
-              30,000+
-            </h2>
-            <p className="text-[12px] text-gray-700 pl-4 font-[satoshi-light]">
-              Happy Customers
-            </p>
-          </div>
-        </div>
+const stats = [
+  { value: "200+", label: "International Brands" },
+  { value: "2,000+", label: "High-Quality Products" },
+  { value: "30,000+", label: "Happy Customers" },
+];
 
-        {/* Right column - Image will show through */}
-        <div className="hidden lg:flex flex-col relative z-50">
-          <img
-            src={star}
-            alt="Star"
-            className="w-[104px] h-[104px] mx-160 mt-40"
-          />
-          <img src={star} alt="Star" className="w-[56px] h-[56px] mt-48" />
-        </div>
-        {/* mobile right column - Image will show through */}
-        <div className="lg:hidden flex flex-col relative z-50">
-          <img
-            src={star}
-            alt="Star"
-            className="w-[104px] h-[104px] mx-70 mt-10"
-          />
-          <img src={star} alt="Star" className="w-[56px] h-[56px] ml-5 mt-8 " />
-        </div>
+const Hero = () => (
+  <section className="relative overflow-hidden bg-hero">
+    <img
+      src={landingImage}
+      alt=""
+      className="mt-6 h-[400px] w-full object-cover object-[78%_center] lg:absolute lg:inset-0 lg:z-0 lg:mt-0 lg:h-full lg:object-right"
+    />
+    <Container className="relative z-10 order-first pt-10 lg:flex lg:min-h-[663px] lg:items-center lg:py-16 lg:pt-16">
+      <div className="lg:max-w-[600px]">
+        <h1 className="font-display text-4xl leading-[1.05] lg:text-[64px]">
+          FIND CLOTHES THAT MATCHES YOUR STYLE
+        </h1>
+        <p className="mt-5 max-w-[545px] text-sm text-black/60 lg:mt-8 lg:text-base">
+          Browse through our diverse range of meticulously crafted garments, designed to bring out your
+          individuality and cater to your sense of style.
+        </p>
+        <Link
+          to={paths.shop}
+          className="mt-6 block rounded-full bg-black px-14 py-3.5 text-center font-body-medium text-white hover:bg-black/85 sm:inline-block lg:mt-8"
+        >
+          Shop Now
+        </Link>
 
-    </>
-  );
-};
+        <dl className="mt-8 flex flex-wrap justify-center gap-x-6 gap-y-3 lg:mt-12 lg:justify-start lg:gap-x-8">
+          {stats.map((s, i) => (
+            <div key={s.label} className={`${i > 0 ? "lg:border-l lg:border-line lg:pl-8" : ""} ${i === 2 ? "w-full text-center lg:w-auto lg:text-left" : ""}`}>
+              <dt className="font-body-bold text-2xl lg:text-[40px]">{s.value}</dt>
+              <dd className="text-xs text-black/60 lg:text-base">{s.label}</dd>
+            </div>
+          ))}
+        </dl>
+      </div>
+    </Container>
+  </section>
+);
 
 export default Hero;

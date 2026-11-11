@@ -1,71 +1,40 @@
+import { Link } from "react-router-dom";
+import { paths } from "../../../app/paths";
 import casualImage from "../../../assets/imgs/casual.png";
 import formalImage from "../../../assets/imgs/formal.png";
-import partyImage from "../../../assets/imgs/party.png";
 import gymImage from "../../../assets/imgs/gym.png";
+import partyImage from "../../../assets/imgs/party.png";
+import Container from "../../../components/layout/Container";
 
-const DressStyleSection = () => {
-  return (
-      <div className="flex justify-center">
-        <div className="lg:h-[866px] lg:w-[1410px] h-[975px] w-[340px] bg-[#F0F0F0] rounded-2xl lg:mt-[1800px] mt-[1670px] mb-[100px]">
-          <div className="flex justify-center font-[neue-montreal-bold] mt-12 lg:mt-20 text-2xl lg:text-6xl px-16 lg:px-0 text-center">
-            BROWSE BY DRESS STYLE
-          </div>
-          <div className="flex flex-col gap-4 lg:grid lg:grid-cols-5 lg:grid-rows-5 lg:gap-4 mt-5 lg:mt-26 mx-6">
-            <div className="lg:col-span-2 lg:row-span-2">
-              <div className="lg:h-[289px] h-[190px] w-full rounded-2xl relative">
-                <div className="absolute top-4 left-4 text-black text-xl lg:text-2xl font-[satoshi-bold] z-10">
-                  Casual
-                </div>
-                <img 
-                  src={casualImage} 
-                  alt="Casual" 
-                  className="lg:h-full w-full h-[190px] rounded-2xl object-cover" 
-                />
-              </div>
-            </div>
-            
-            <div className="lg:col-span-3 lg:row-span-2 lg:col-start-3">
-              <div className="lg:h-[289px] h-[190px] w-full rounded-2xl relative">
-                <div className="absolute top-4 left-4 text-black text-xl lg:text-2xl font-[satoshi-bold] z-10">
-                  Formal
-                </div>
-                <img 
-                  src={formalImage} 
-                  alt="Formal" 
-                  className="h-full w-full rounded-2xl object-cover" 
-                />
-              </div>
-            </div>
-            
-            <div className="lg:col-span-3 lg:row-span-2 lg:row-start-3">
-              <div className="lg:h-[289px] h-[190px] w-full rounded-2xl relative">
-                <div className="absolute top-4 left-4 text-black text-xl lg:text-2xl font-[satoshi-bold] z-10">
-                  Party
-                </div>
-                <img 
-                  src={partyImage} 
-                  alt="Party" 
-                  className="h-full w-full rounded-2xl object-cover" 
-                />
-              </div>
-            </div>
-            
-            <div className="lg:col-span-2 lg:row-span-2 lg:col-start-4 lg:row-start-3">
-              <div className="lg:h-[289px] h-[190px] w-full rounded-2xl relative">
-                <div className="absolute top-4 left-4 text-black text-xl lg:text-2xl font-[satoshi-bold] z-10">
-                  Gym
-                </div>
-                <img 
-                  src={gymImage} 
-                  alt="Gym" 
-                  className="h-full w-full rounded-2xl object-cover" 
-                />
-              </div>
-            </div>
-          </div>
+const tiles = [
+  { style: "casual", label: "Casual", src: casualImage, span: "lg:col-span-2" },
+  { style: "formal", label: "Formal", src: formalImage, span: "lg:col-span-3" },
+  { style: "party", label: "Party", src: partyImage, span: "lg:col-span-3" },
+  { style: "gym", label: "Gym", src: gymImage, span: "lg:col-span-2" },
+];
+
+const DressStyleSection = () => (
+  <section className="py-6 lg:py-10">
+    <Container>
+      <div className="rounded-[20px] bg-surface px-6 py-10 lg:rounded-[40px] lg:px-16 lg:py-[70px]">
+        <h2 className="text-center font-display text-3xl lg:text-5xl">BROWSE BY DRESS STYLE</h2>
+        <div className="mt-8 grid grid-cols-1 gap-4 lg:mt-16 lg:grid-cols-5 lg:gap-5">
+          {tiles.map((t) => (
+            <Link
+              key={t.style}
+              to={`${paths.shop}?style=${t.style}`}
+              className={`relative block h-[190px] overflow-hidden rounded-[20px] bg-white lg:h-[289px] ${t.span}`}
+            >
+              <span className="absolute left-6 top-4 z-10 font-body-bold text-2xl lg:left-9 lg:top-6 lg:text-4xl">
+                {t.label}
+              </span>
+              <img src={t.src} alt="" className="h-full w-full object-cover object-right" />
+            </Link>
+          ))}
         </div>
       </div>
-  );
-};
+    </Container>
+  </section>
+);
 
 export default DressStyleSection;

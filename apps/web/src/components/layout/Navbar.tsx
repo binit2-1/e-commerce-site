@@ -1,123 +1,106 @@
-import { useState } from 'react';
-import magnifyingGlass from "../../assets/imgs/magnifyingGlass.svg";
+import { useState, type FormEvent } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { paths } from "../../app/paths";
 import cart from "../../assets/imgs/cart.svg";
-import pfp from "../../assets/imgs/pfp.svg";
 import dropdown from "../../assets/imgs/dropdown.svg";
 import hamburger from "../../assets/imgs/hamburger.svg";
-import gsap from "gsap";
-import { Link } from "react-router-dom";
-import { paths } from "../../app/paths";
+import magnifyingGlass from "../../assets/imgs/magnifyingGlass.svg";
+import pfp from "../../assets/imgs/pfp.svg";
+import Container from "./Container";
+
+const links = [
+  { label: "Shop", to: paths.shop, dropdown: true },
+  { label: "On Sale", to: `${paths.shop}?onSale=true` },
+  { label: "New Arrivals", to: `${paths.shop}?sort=newest` },
+  { label: "Brands", to: paths.shop },
+];
 
 const Navbar = () => {
-  const [menuIsOpen, setMenuIsOpen] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [query, setQuery] = useState("");
+  const navigate = useNavigate();
 
-  const hamburgerOnClick = () => {
-    console.log("Hamburger clicked - opening menu");
-    const tl = gsap.timeline();
-    
-    // Animate menu only
-    tl.to(".menu", {
-      width: "50%",
-      duration: 0.3,
-      ease: "power2.inOut",
-    });
-    
-    tl.to('.menu-elements', {
-      x: 0,
-      duration: 0.4,
-      ease: "power2.inOut",
-    }, "<");
-    
-    setMenuIsOpen(true);
-  };
-
-  const closeMenu = () => {
-    console.log("Closing menu");
-    const tl = gsap.timeline();
-    
-    // Animate menu only
-    tl.to('.menu-elements', {
-      x: -180,
-      duration: 0.3,
-      ease: "power2.inOut",
-    });
-    
-    tl.to(".menu", {
-      width: "0%",
-      duration: 0.4,
-      ease: "power2.inOut",
-    }, "<");
-    
-    setMenuIsOpen(false);
+  const onSearch = (e: FormEvent) => {
+    e.preventDefault();
+    const q = query.trim();
+    setMenuOpen(false);
+    navigate(q ? `${paths.shop}?q=${encodeURIComponent(q)}` : paths.shop);
   };
 
   return (
-    <div className="absolute w-full h-17.5 bg-white top-9.5 px-5 xl:px-6 2xl:px-20 z-40">
-      <div className="menu lg:hidden absolute h-screen top-17.5 left-0 w-0 bg-white z-50 overflow-hidden">
-        <div className="menu-elements flex flex-col gap-6 p-6" style={{ transform: 'translateX(-180px)' }}>
-          <Link to={paths.shop} onClick={closeMenu} className="font-[satoshi-medium] text-[16px] cursor-pointer">Shop</Link>
-          <div className="font-[satoshi-medium] text-[16px] cursor-pointer">On Sale</div>
-          <div className="font-[satoshi-medium] text-[16px] cursor-pointer">New Arrivals</div>
-          <div className="font-[satoshi-medium] text-[16px] cursor-pointer">Brands</div>
-        </div>
-      </div>
+    <header className="sticky top-0 z-40 border-b border-line bg-white">
+      <Container className="flex h-16 items-center gap-4 lg:h-24 lg:gap-10">
+        <button
+          type="button"
+          aria-label={menuOpen ? "Close menu" : "Open menu"}
+          aria-expanded={menuOpen}
+          onClick={() => setMenuOpen((v) => !v)}
+          className="lg:hidden"
+        >
+          <img src={hamburger} alt="" className="h-4 w-5" />
+        </button>
 
-      <div className="flex justify-between lg:justify-center lg:px-20 xl:justify-around 2xl:justify-around h-full w-full items-center flex-row gap-5 relative z-50">
-        <div className="flex items-center gap-4 lg:hidden xl:hidden 2xl:hidden">
-          <img
-            src={hamburger}
-            alt="Menu"
-            onClick={menuIsOpen ? closeMenu : hamburgerOnClick}
-            className="cursor-pointer w-5 h-4"
-          />
-          <Link to={paths.home} className="font-[neue-montreal-bold] text-2xl">SHOP CO</Link>
-        </div>
-
-        <Link to={paths.home} className="hidden lg:block xl:block 2xl:block font-[neue-montreal-bold] lg:text-xl xl:text-2xl 2xl:text-3xl">
-          SHOP CO
+        <Link to={paths.home} className="font-display text-2xl leading-none lg:text-[32px]">
+          SHOP.CO
         </Link>
 
-        <div className="hidden lg:flex xl:flex 2xl:flex gap-3 lg:gap-4 xl:gap-5 2xl:gap-12">
-          <Link to={paths.shop} className="font-[satoshi-medium] lg:text-[12px] xl:text-[13px] 2xl:text-[15px] cursor-pointer">
-            Shop
-            <img src={dropdown} alt="dropdown" className="inline-block ml-1" />
-          </Link>
-          <div className="font-[satoshi-medium] lg:text-[12px] xl:text-[13px] 2xl:text-[15px] cursor-pointer">
-            On Sale
-          </div>
-          <div className="font-[satoshi-medium] lg:text-[12px] xl:text-[13px] 2xl:text-[15px] cursor-pointer">
-            New Arrivals
-          </div>
-          <div className="font-[satoshi-medium] lg:text-[12px] xl:text-[13px] 2xl:text-[15px] cursor-pointer">
-            Brands
-          </div>
-        </div>
+        <nav className="hidden items-center gap-6 lg:flex" aria-label="Main">
+          {links.map((l) => (
+            <Link key={l.label} to={l.to} className="flex items-center gap-1 whitespace-nowrap text-base">
+              {l.label}
+              {l.dropdown && <img src={dropdown} alt="" className="h-2 w-3" />}
+            </Link>
+          ))}
+        </nav>
 
-        <div className="hidden lg:block xl:block 2xl:block relative lg:w-62.5 xl:w-[320px] 2xl:w-112.5">
-          <img
-            src={magnifyingGlass}
-            alt="Search"
-            className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5"
-          />
+        <form onSubmit={onSearch} role="search" className="relative hidden flex-1 lg:block">
+          <img src={magnifyingGlass} alt="" className="absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2" />
           <input
             type="search"
-            className="border bg-[#f0f0f0] border-none font-[satoshi-regular] rounded-4xl pl-12 py-3 w-full"
-            placeholder="Search for Products..."
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+            placeholder="Search for products..."
+            aria-label="Search products"
+            className="w-full rounded-full bg-surface py-3 pl-12 pr-4 outline-none focus:ring-2 focus:ring-black/20"
           />
-        </div>
-        <div className="flex flex-row gap-3 lg:gap-2 xl:gap-3 2xl:gap-4">
-          <img
-            src={magnifyingGlass}
-            alt="Search"
-            className="lg:hidden xl:hidden 2xl:hidden w-5 h-5 cursor-pointer"
-          />
-          <Link to={paths.cart}>
-            <img src={cart} alt="cart" className="w-5 h-5 cursor-pointer" />
+        </form>
+
+        <div className="ml-auto flex items-center gap-3.5 lg:ml-0">
+          <Link to={paths.shop} aria-label="Search" className="lg:hidden">
+            <img src={magnifyingGlass} alt="" className="h-5 w-5" />
           </Link>
-          <img src={pfp} alt="pfp" className="w-5 h-5 cursor-pointer" />
+          <Link to={paths.cart} aria-label="Cart" className="relative">
+            <img src={cart} alt="" className="h-6 w-6" />
+          </Link>
+          <button type="button" aria-label="Account">
+            <img src={pfp} alt="" className="h-6 w-6" />
+          </button>
         </div>
-      </div>
-    </div>
+      </Container>
+
+      {menuOpen && (
+        <div className="border-t border-line bg-white lg:hidden">
+          <Container className="flex flex-col gap-4 py-5">
+            <form onSubmit={onSearch} role="search" className="relative">
+              <img src={magnifyingGlass} alt="" className="absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2" />
+              <input
+                type="search"
+                value={query}
+                onChange={(e) => setQuery(e.target.value)}
+                placeholder="Search for products..."
+                aria-label="Search products"
+                className="w-full rounded-full bg-surface py-3 pl-12 pr-4 outline-none"
+              />
+            </form>
+            {links.map((l) => (
+              <Link key={l.label} to={l.to} onClick={() => setMenuOpen(false)} className="font-body-medium text-base">
+                {l.label}
+              </Link>
+            ))}
+          </Container>
+        </div>
+      )}
+    </header>
   );
 };
 

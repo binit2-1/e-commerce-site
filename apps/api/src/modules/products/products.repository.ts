@@ -28,6 +28,7 @@ function buildWhere(q: ProductQuery) {
     clauses.push(sql.replace("?", `$${params.length}`));
   };
 
+  if (q.q) add("position(lower(?) in lower(name)) > 0", q.q);
   if (q.type) add("type = ?", q.type);
   if (q.style) add("style = ?", q.style);
   if (q.minPrice !== undefined) add("price >= ?", q.minPrice);
