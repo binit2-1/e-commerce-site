@@ -8,13 +8,13 @@ import calvinKlein from "../assets/imgs/calvin-klein.png";
 const CompanyBar = () => {
   return (
     <div className="absolute">
-      <div className="w-screen mt-220 lg:mt-260 h-[146px] lg:h-[122px] bg-black flex items-center justify-center">
+      <div className="w-screen mt-220 lg:mt-260 h-36.5 lg:h-30.5 bg-black flex items-center justify-center">
         <div className="flex flex-row flex-wrap justify-center gap-10 lg:gap-32">
-            <img src={versace} alt="Versace" className="w-auto h-[20px] lg:w-auto lg:h-[40px]" />
-            <img src={zara} alt="Zara" className="w-auto h-[20px] lg:w-auto lg:h-[40px]" />
-            <img src={gucci} alt="Gucci" className="w-auto h-[20px] lg:w-auto lg:h-[40px]" />
-            <img src={prada} alt="Prada" className="w-auto h-[20px] lg:w-auto lg:h-[40px]" />
-            <img src={calvinKlein} alt="Calvin Klein" className="w-auto h-[20px] lg:w-auto lg:h-[40px]" />
+            <img src={versace} alt="Versace" className="w-auto h-5 lg:w-auto lg:h-10" />
+            <img src={zara} alt="Zara" className="w-auto h-5 lg:w-auto lg:h-10" />
+            <img src={gucci} alt="Gucci" className="w-auto h-5 lg:w-auto lg:h-10
+            <img src={prada} alt="Prada" className="w-auto h-5 lg:w-auto lg:h-10" />
+            <img src={calvinKlein} alt="Calvin Klein" className="w-auto h-[20px] lg:w-auto lg:h-10" />
         </div>
       </div>
     </div>

@@ -52,8 +52,8 @@ const Navbar = () => {
   };
 
   return (
-    <div className="absolute w-full h-[70px] bg-white top-[38px] px-5 xl:px-6 2xl:px-20 z-40">
-      <div className="menu lg:hidden absolute h-screen top-[70px] left-0 w-0 bg-white z-50 overflow-hidden">
+    <div className="absolute w-full h-17.5 bg-white top-9.5 px-5 xl:px-6 2xl:px-20 z-40">
+      <div className="menu lg:hidden absolute h-screen top-17.5 left-0 w-0 bg-white z-50 overflow-hidden">
         <div className="menu-elements flex flex-col gap-6 p-6" style={{ transform: 'translateX(-180px)' }}>
           <Link to={paths.shop} onClick={closeMenu} className="font-[satoshi-medium] text-[16px] cursor-pointer">Shop</Link>
           <div className="font-[satoshi-medium] text-[16px] cursor-pointer">On Sale</div>
@@ -93,7 +93,7 @@ const Navbar = () => {
           </div>
         </div>
 
-        <div className="hidden lg:block xl:block 2xl:block relative lg:w-[250px] xl:w-[320px] 2xl:w-[450px]">
+        <div className="hidden lg:block xl:block 2xl:block relative lg:w-62.5 xl:w-[320px] 2xl:w-112.5">
           <img
             src={magnifyingGlass}
             alt="Search"
