@@ -1,0 +1,175 @@
+{
+  "mobile": {
+    "file": "clips/mobile.mp4",
+    "duration": 10.966667,
+    "width": 390,
+    "height": 844,
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "frames": 166,
+    "marks": []
+  },
+  "home": {
+    "file": "clips/home.mp4",
+    "duration": 14.566667,
+    "width": 1440,
+    "height": 810,
+    "viewport": {
+      "width": 1440,
+      "height": 810
+    },
+    "frames": 323,
+    "marks": []
+  },
+  "search": {
+    "file": "clips/search.mp4",
+    "duration": 25.266667,
+    "width": 1440,
+    "height": 810,
+    "viewport": {
+      "width": 1440,
+      "height": 810
+    },
+    "frames": 648,
+    "marks": []
+  },
+  "product": {
+    "file": "clips/product.mp4",
+    "duration": 18.466667,
+    "width": 1440,
+    "height": 810,
+    "viewport": {
+      "width": 1440,
+      "height": 810
+    },
+    "frames": 524,
+    "marks": [
+      {
+        "name": "addToCart",
+        "t": 15.601133056640625,
+        "rect": {
+          "x": 930,
+          "y": 700.65625,
+          "w": 410,
+          "h": 52
+        }
+      },
+      {
+        "name": "badge",
+        "t": 17.160133056640625,
+        "rect": {
+          "x": 1278,
+          "y": 75.5,
+          "w": 24,
+          "h": 24
+        }
+      }
+    ]
+  },
+  "cart": {
+    "file": "clips/cart.mp4",
+    "duration": 15.966667,
+    "width": 1440,
+    "height": 810,
+    "viewport": {
+      "width": 1440,
+      "height": 810
+    },
+    "frames": 468,
+    "marks": [
+      {
+        "name": "totals",
+        "t": 14.645924072265625,
+        "rect": {
+          "x": 835,
+          "y": 292,
+          "w": 505,
+          "h": 467
+        }
+      }
+    ]
+  },
+  "signup": {
+    "file": "clips/signup.mp4",
+    "duration": 17.4,
+    "width": 1440,
+    "height": 810,
+    "viewport": {
+      "width": 1440,
+      "height": 810
+    },
+    "frames": 476,
+    "marks": []
+  },
+  "checkout": {
+    "file": "clips/checkout.mp4",
+    "duration": 8.866667,
+    "width": 1440,
+    "height": 810,
+    "viewport": {
+      "width": 1440,
+      "height": 810
+    },
+    "frames": 182,
+    "marks": [
+      {
+        "name": "placed",
+        "t": 7.890461181640625,
+        "rect": {
+          "x": 100,
+          "y": 208,
+          "w": 1240,
+          "h": 64
+        }
+      }
+    ]
+  },
+  "orders": {
+    "file": "clips/orders.mp4",
+    "duration": 31.4,
+    "width": 1440,
+    "height": 810,
+    "viewport": {
+      "width": 1440,
+      "height": 810
+    },
+    "frames": 985,
+    "marks": [
+      {
+        "name": "review",
+        "t": 24.655328125,
+        "rect": {
+          "x": 129,
+          "y": 314.65625,
+          "w": 552,
+          "h": 24
+        }
+      }
+    ]
+  },
+  "session": {
+    "file": "clips/session.mp4",
+    "duration": 19.566667,
+    "width": 1440,
+    "height": 810,
+    "viewport": {
+      "width": 1440,
+      "height": 810
+    },
+    "frames": 487,
+    "marks": [
+      {
+        "name": "badge",
+        "t": 16.285262939453126,
+        "rect": {
+          "x": 1278,
+          "y": 75.5,
+          "w": 24,
+          "h": 24
+        }
+      }
+    ]
+  }
+}

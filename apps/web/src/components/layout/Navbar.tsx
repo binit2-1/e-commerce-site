@@ -1,5 +1,5 @@
-import { useState, type FormEvent } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useEffect, useState, type FormEvent } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { paths } from "../../app/paths";
 import cart from "../../assets/imgs/cart.svg";
 import dropdown from "../../assets/imgs/dropdown.svg";
@@ -21,6 +21,7 @@ const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [query, setQuery] = useState("");
   const navigate = useNavigate();
+  const location = useLocation();
   const { count } = useCart();
   const { user, logout } = useAuth();
   const [accountOpen, setAccountOpen] = useState(false);
@@ -30,6 +31,11 @@ const Navbar = () => {
     await logout();
     navigate(paths.home);
   };
+
+  // The search box mirrors the URL: it shows the active search and clears when you leave it.
+  useEffect(() => {
+    setQuery(new URLSearchParams(location.search).get("q") ?? "");
+  }, [location.pathname, location.search]);
 
   const onSearch = (e: FormEvent) => {
     e.preventDefault();

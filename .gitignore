@@ -4,3 +4,5 @@ dist
 *.log
 .DS_Store
 .agents/*
+# walkthrough: raw scene recordings are rebuilt by pnpm video:capture
+apps/video/public/clips/*.mp4

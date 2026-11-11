@@ -16,7 +16,10 @@
     "db:schema": "pnpm --filter @shop/api db:schema",
     "db:seed": "pnpm --filter @shop/api db:seed",
     "db:reset": "pnpm --filter @shop/api db:reset",
-    "demo": "pnpm --filter @shop/demo dev"
+    "demo": "pnpm --filter @shop/demo dev",
+    "video:capture": "pnpm --filter @shop/video capture",
+    "video:render": "pnpm --filter @shop/video render",
+    "video:studio": "pnpm --filter @shop/video studio"
   },
   "pnpm": {
     "onlyBuiltDependencies": [

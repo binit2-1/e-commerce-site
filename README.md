@@ -12,6 +12,10 @@ Made with the [stageshow](.agents/skills/stageshow) kit (faux UI, so they are il
 
 Run them live with `pnpm demo` (opens on `localhost:5191`).
 
+### Full walkthrough video
+
+[docs/walkthrough/shop-walkthrough.mp4](docs/walkthrough/shop-walkthrough.mp4) is a 2 min 15 s tour of the **real running site** (browse, search and filters, phone view, product, cart and promo code, sign up, checkout, orders, review, saved cart). The storyboard and how to remake it are in [docs/walkthrough/STORYBOARD.md](docs/walkthrough/STORYBOARD.md).
+
 ## What it does
 
 - **Shop:** home page, product listing with filters, sort, search and pagination (all kept in the URL), product page with gallery, sizes, colors, reviews and related items.
@@ -27,6 +31,7 @@ Run them live with `pnpm demo` (opens on `localhost:5191`).
 | `apps/api` | Express 5, PostgreSQL (`pg`), zod, JWT cookie, bcrypt |
 | `packages/shared` | Types and zod schemas used by both |
 | `apps/demo` | The stageshow demos |
+| `apps/video` | The walkthrough video (Remotion) |
 | Database | Postgres 17 in Docker |
 
 pnpm monorepo, TypeScript everywhere.

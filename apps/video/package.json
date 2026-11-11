@@ -1,0 +1,27 @@
+{
+  "name": "@shop/video",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "assets": "node scripts/prepare-assets.mjs",
+    "capture": "node capture/record.mjs",
+    "studio": "remotion studio src/index.ts",
+    "render": "remotion render src/index.ts Walkthrough ../../docs/walkthrough/shop-walkthrough.mp4 --codec=h264 --crf=22 --browser-executable=${CHROME_PATH:-/usr/bin/google-chrome} && node scripts/finalize.mjs",
+    "typecheck": "tsc --noEmit",
+    "lint": "tsc --noEmit",
+    "finalize": "node scripts/finalize.mjs"
+  },
+  "dependencies": {
+    "@remotion/cli": "4.0.542",
+    "@remotion/fonts": "4.0.542",
+    "@remotion/transitions": "4.0.542",
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1",
+    "remotion": "4.0.542"
+  },
+  "devDependencies": {
+    "@types/react": "^19.1.10",
+    "typescript": "^5.9.0"
+  }
+}
