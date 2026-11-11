@@ -12,8 +12,10 @@
     "typecheck": "pnpm -r typecheck",
     "db:up": "docker compose up -d --wait",
     "db:down": "docker compose down",
-    "db:migrate": "pnpm --filter @shop/api db:migrate",
-    "test": "vitest run"
+    "test": "vitest run",
+    "db:schema": "pnpm --filter @shop/api db:schema",
+    "db:seed": "pnpm --filter @shop/api db:seed",
+    "db:reset": "pnpm --filter @shop/api db:reset"
   },
   "pnpm": {
     "onlyBuiltDependencies": [

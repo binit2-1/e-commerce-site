@@ -16,11 +16,13 @@ Requires Node 22+, pnpm, Docker.
 cp .env.example .env
 pnpm install
 pnpm db:up        # Postgres 17 in Docker (host port 5433 by default)
-pnpm db:migrate   # create tables + seed sample products
+pnpm db:reset     # drop + create tables (apps/api/db/schema.sql) and load demo data (seed.sql)
 pnpm dev          # api on :3000, web on :5173 (proxies /api)
 ```
 
-Other scripts: `pnpm build`, `pnpm lint`, `pnpm typecheck`, `pnpm test`, `pnpm db:down`.
+Other scripts: `pnpm build`, `pnpm lint`, `pnpm typecheck`, `pnpm test`, `pnpm db:down`, `pnpm db:schema` (tables only), `pnpm db:seed` (data only).
+
+Backend layout: `apps/api/src/index.ts` (app), `routes/*.routes.ts`, `controllers/*.controller.ts` (SQL lives in the controllers), `db.ts` (pool). The database is defined by hand in `apps/api/db/schema.sql`; edit it and run `pnpm db:reset`.
 
 ## API
 
