@@ -42,7 +42,7 @@ const Testimonial = () => {
   return (
     <div className="w-full bg-white py-16 px-4">
       {/* Header Section */}
-      <div className="flex items-center justify-between max-w-7xl mx-auto mb-12">
+      <div className="flex items-center justify-between max-w-page mx-auto mb-12">
         <h2 className="text-3xl md:text-4xl lg:text-5xl font-[neue-montreal-bold] text-black">
           OUR HAPPY CUSTOMERS
         </h2>
@@ -69,7 +69,7 @@ const Testimonial = () => {
       </div>
 
       {/* Testimonials Container */}
-      <div className="max-w-7xl mx-auto">
+      <div className="max-w-page mx-auto">
         <div className="flex gap-6 overflow-hidden">
           {/* Desktop: Show multiple cards */}
           <div className="hidden lg:flex gap-6 w-full">

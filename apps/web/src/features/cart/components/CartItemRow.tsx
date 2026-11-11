@@ -40,7 +40,7 @@ const CartItemRow = ({ item, onQuantity, onRemove }: CartItemRowProps) => (
 
       <div className="flex items-end justify-between gap-3">
         <span className="font-body-bold text-xl lg:text-2xl">{formatPrice(item.price)}</span>
-        <QuantityStepper value={item.quantity} onChange={onQuantity} max={MAX_QUANTITY} className="gap-3 px-3 py-2 lg:gap-5 lg:px-4 lg:py-3" />
+        <QuantityStepper value={item.quantity} onChange={onQuantity} max={MAX_QUANTITY} compact />
       </div>
     </div>
   </li>

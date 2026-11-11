@@ -1,6 +1,6 @@
 import { PRODUCT_COLORS, PRODUCT_SIZES, PRODUCT_STYLES, PRODUCT_TYPES, type ProductQuery } from "@shop/shared";
 import { useState } from "react";
-import { ChevronRight, Sliders } from "../../../components/icons";
+import { ChevronRight, Close, Sliders } from "../../../components/icons";
 import Button from "../../../components/ui/Button";
 import Chip from "../../../components/ui/Chip";
 import ColorSwatch from "../../../components/ui/ColorSwatch";
@@ -14,6 +14,8 @@ interface FilterPanelProps {
   value: Filters;
   onApply: (filters: Filters) => void;
   onClear: () => void;
+  /** When set the panel renders as a bare sheet (mobile drawer) with a close button. */
+  onClose?: () => void;
 }
 
 const cap = (s: string) => s.charAt(0).toUpperCase() + s.slice(1);
@@ -25,7 +27,7 @@ function OptionRow({ label, selected, onClick }: { label: string; selected: bool
       type="button"
       aria-pressed={selected}
       onClick={onClick}
-      className={`flex w-full items-center justify-between py-2.5 text-left ${selected ? "font-body-bold text-black" : "text-black/60 hover:text-black"}`}
+      className={`flex w-full items-center justify-between py-1.5 text-left lg:py-2.5 ${selected ? "font-body-bold text-black" : "text-black/60 hover:text-black"}`}
     >
       {label}
       <ChevronRight width={18} height={18} />
@@ -34,7 +36,7 @@ function OptionRow({ label, selected, onClick }: { label: string; selected: bool
 }
 
 /** Draft filters live here; they only reach the URL when "Apply Filter" is pressed. */
-const FilterPanel = ({ value, onApply, onClear }: FilterPanelProps) => {
+const FilterPanel = ({ value, onApply, onClear, onClose }: FilterPanelProps) => {
   const [draft, setDraft] = useState<Filters>(value);
   const min = draft.minPrice ?? PRICE_MIN;
   const max = draft.maxPrice ?? PRICE_MAX;
@@ -47,10 +49,16 @@ const FilterPanel = ({ value, onApply, onClear }: FilterPanelProps) => {
     });
 
   return (
-    <div className="rounded-[20px] border border-line px-5 py-5 lg:px-6">
+    <div className={onClose ? "" : "rounded-[20px] border border-line px-5 py-5 lg:px-6"}>
       <div className="flex items-center justify-between pb-5">
         <h2 className="font-body-bold text-xl">Filters</h2>
-        <Sliders width={20} height={20} className="text-black/40" />
+        {onClose ? (
+          <button type="button" aria-label="Close filters" onClick={onClose} className="text-black/40">
+            <Close width={24} height={24} />
+          </button>
+        ) : (
+          <Sliders width={20} height={20} className="text-black/40" />
+        )}
       </div>
 
       <div className="border-t border-line py-3">
@@ -69,7 +77,7 @@ const FilterPanel = ({ value, onApply, onClear }: FilterPanelProps) => {
       </FilterSection>
 
       <FilterSection title="Colors">
-        <div className="flex flex-wrap gap-4">
+        <div className="flex flex-wrap gap-3 lg:gap-4">
           {PRODUCT_COLORS.map((c) => (
             <ColorSwatch
               key={c.name}

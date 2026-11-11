@@ -20,11 +20,12 @@ pnpm db:migrate   # create tables + seed sample products
 pnpm dev          # api on :3000, web on :5173 (proxies /api)
 ```
 
-Other scripts: `pnpm build`, `pnpm lint`, `pnpm typecheck`, `pnpm db:down`.
+Other scripts: `pnpm build`, `pnpm lint`, `pnpm typecheck`, `pnpm test`, `pnpm db:down`.
 
 ## API
 
 - `GET /api/health`
-- `GET /api/products`
+- `GET /api/products?type&style&minPrice&maxPrice&colors&sizes&onSale&q&sort&page&pageSize` (paginated)
+- `GET /api/products/:id`, `/:id/related`, `/:id/reviews`
 - `GET /api/products/new-arrivals` (newest first)
 - `GET /api/products/best-sellers` (highest rated first)

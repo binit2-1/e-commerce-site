@@ -19,15 +19,15 @@ Use **data-router mode** (`createBrowserRouter` + `RouterProvider`), which we al
 
 ### Route map
 
-| URL                    | Page                | Notes                         |
-| ---------------------- | ------------------- | ----------------------------- |
-| `/`                    | `HomePage`          | index route                   |
-| `/shop`                | `CategoryPage`      | product listing (`?style=`)   |
-| `/products/:productId` | `ProductDetailPage` | dynamic segment               |
-| `/cart`                | `CartPage`          |                               |
-| `*`                    | `NotFoundPage`      | catch-all                     |
+| URL                    | Page                | Notes                                                                 |
+| ---------------------- | ------------------- | --------------------------------------------------------------------- |
+| `/`                    | `HomePage`          | index route                                                           |
+| `/shop`                | `CategoryPage`      | query: `q, type, style, minPrice, maxPrice, colors, sizes, onSale, sort, page` |
+| `/products/:productId` | `ProductDetailPage` | dynamic segment; invalid / unknown id renders the 404 view            |
+| `/cart`                | `CartPage`          | cart is stored in the browser (`localStorage`)                        |
+| `*`                    | `NotFoundPage`      | catch-all                                                             |
 
-Query string state (filters, sort) belongs in `useSearchParams`, not in the path.
+Query string state (filters, sort, page) belongs in `useSearchParams`, not in the path. The category page parses it with `parseCatalogParams` (`features/catalog/params.ts`), which shares its zod schema with the API, and omits default values when writing URLs.
 
 ### Adding a page
 

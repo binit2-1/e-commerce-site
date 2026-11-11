@@ -15,7 +15,7 @@ interface SortSelectProps {
 
 const SortSelect = ({ value, onChange }: SortSelectProps) => (
   <label className="flex items-center gap-1 text-sm lg:text-base">
-    <span className="text-muted">Sort by:</span>
+    <span className="hidden text-muted sm:inline">Sort by:</span>
     <span className="relative">
       <select
         value={value}

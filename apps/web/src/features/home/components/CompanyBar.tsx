@@ -14,10 +14,10 @@ const brands = [
 ];
 
 const CompanyBar = () => (
-  <section className="bg-black py-9 lg:py-10">
+  <section className="bg-black py-10">
     <Container className="flex flex-wrap items-center justify-center gap-x-10 gap-y-6 lg:justify-between">
       {brands.map((b) => (
-        <img key={b.name} src={b.src} alt={b.name} className="h-5 w-auto lg:h-8" />
+        <img key={b.name} src={b.src} alt={b.name} className="h-6 w-auto lg:h-8" />
       ))}
     </Container>
   </section>

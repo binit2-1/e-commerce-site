@@ -48,7 +48,7 @@ const ProductDetailPage = () => {
 
   return (
     <Container>
-      <div className="border-t border-line">
+      <div>
         <Breadcrumbs
           items={[
             { label: "Home", to: paths.home },

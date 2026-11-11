@@ -37,9 +37,9 @@ const ProductInfo = ({ product }: { product: ProductDetail }) => {
 
   return (
     <div>
-      <h1 className="font-display text-[32px] uppercase leading-tight lg:text-[40px]">{product.name}</h1>
+      <h1 className="font-display text-2xl uppercase leading-tight lg:text-[40px]">{product.name}</h1>
       <div className="mt-3 lg:mt-3.5">
-        <StarRating rating={product.rating} size={22} />
+        <StarRating rating={product.rating} size={20} />
       </div>
       <div className="mt-3 lg:mt-3.5">
         <PriceTag price={product.price} oldPrice={product.old_price} size="lg" />
@@ -62,9 +62,9 @@ const ProductInfo = ({ product }: { product: ProductDetail }) => {
         <>
           <Divider />
           <p className="text-base text-black/60">Choose Size</p>
-          <div className="mt-4 flex flex-wrap gap-3">
+          <div className="mt-4 flex flex-wrap gap-2 lg:gap-3">
             {product.sizes.map((s) => (
-              <Chip key={s} selected={size === s} onClick={() => setSize(s)} className="px-6 py-3 text-base">
+              <Chip key={s} size="lg" selected={size === s} onClick={() => setSize(s)}>
                 {s}
               </Chip>
             ))}

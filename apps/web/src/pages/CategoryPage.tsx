@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import { paths } from "../app/paths";
 import Container from "../components/layout/Container";
-import { Close, Sliders } from "../components/icons";
+import { Sliders } from "../components/icons";
 import Breadcrumbs from "../components/ui/Breadcrumbs";
 import Pagination from "../components/ui/Pagination";
 import FilterPanel from "../features/catalog/components/FilterPanel";
@@ -27,11 +27,12 @@ const CategoryPage = () => {
   const from = data && total > 0 ? (data.page - 1) * data.pageSize + 1 : 0;
   const to = data ? Math.min(total, data.page * data.pageSize) : 0;
 
-  const panel = (
+  const renderPanel = (onClose?: () => void) => (
     // Remount when the URL changes so the draft re-syncs with the applied filters.
     <FilterPanel
       key={searchParams.toString()}
       value={query}
+      onClose={onClose}
       onApply={(f) => {
         update(f);
         setDrawerOpen(false);
@@ -46,7 +47,7 @@ const CategoryPage = () => {
   return (
     <>
       <Container>
-        <div className="border-t border-line">
+        <div>
           <Breadcrumbs
             items={[
               { label: "Home", to: paths.home },
@@ -57,11 +58,11 @@ const CategoryPage = () => {
         </div>
 
         <div className="pb-16 lg:grid lg:grid-cols-[295px_1fr] lg:gap-5 lg:pb-24">
-          <aside className="hidden lg:block">{panel}</aside>
+          <aside className="hidden lg:block">{renderPanel()}</aside>
 
           <div className="min-w-0">
             <div className="flex flex-wrap items-center justify-between gap-x-4 gap-y-2">
-              <h1 className="font-display text-[32px] lg:text-[32px]">{title}</h1>
+              <h1 className="font-display text-2xl lg:text-[32px]">{title}</h1>
               <button
                 type="button"
                 aria-label="Open filters"
@@ -70,8 +71,8 @@ const CategoryPage = () => {
               >
                 <Sliders width={18} height={18} />
               </button>
-              <div className="flex w-full items-center justify-between gap-4 lg:w-auto">
-                <p className="text-sm text-muted lg:text-base" aria-live="polite">
+              <div className="flex w-full items-center justify-between gap-3 lg:w-auto lg:gap-4">
+                <p className="whitespace-nowrap text-xs text-muted sm:text-sm lg:text-base" aria-live="polite">
                   {data ? `Showing ${from}-${to} of ${total} Products` : "Loading…"}
                 </p>
                 <SortSelect value={query.sort} onChange={(sort) => update({ sort })} />
@@ -121,16 +122,8 @@ const CategoryPage = () => {
             className="absolute inset-0 bg-black/40"
             onClick={() => setDrawerOpen(false)}
           />
-          <div className="absolute inset-x-0 bottom-0 max-h-[90vh] overflow-y-auto rounded-t-[20px] bg-white p-4">
-            <button
-              type="button"
-              aria-label="Close"
-              onClick={() => setDrawerOpen(false)}
-              className="absolute right-6 top-6 z-10"
-            >
-              <Close width={20} height={20} />
-            </button>
-            {panel}
+          <div className="absolute inset-x-0 bottom-0 max-h-[90vh] overflow-y-auto rounded-t-[20px] bg-white px-5 pb-6 pt-6">
+            {renderPanel(() => setDrawerOpen(false))}
           </div>
         </div>
       )}

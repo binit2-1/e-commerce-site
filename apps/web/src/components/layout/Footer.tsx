@@ -2,10 +2,10 @@
 
 const Footer = () => {
   return (
-    <footer className="bg-gray-100 mt-16">
+    <footer className="mt-16 bg-surface">
       {/* Newsletter Section */}
-      <div className="bg-black text-white py-8 px-4 mx-4 lg:mx-16 rounded-2xl relative -mb-16 z-10">
-        <div className="max-w-6xl mx-auto flex flex-col lg:flex-row items-center justify-between gap-6">
+      <div className="relative z-10 -mb-16 mx-4 max-w-page rounded-[20px] bg-black px-6 py-8 text-white xl:mx-auto lg:px-16 lg:py-9">
+        <div className="flex flex-col lg:flex-row items-center justify-between gap-6">
           <h2 className="text-2xl lg:text-4xl font-[neue-montreal-bold] text-center lg:text-left max-w-md">
             STAY UPTO DATE ABOUT OUR LATEST OFFERS
           </h2>
@@ -28,8 +28,8 @@ const Footer = () => {
       </div>
 
       {/* Main Footer Content */}
-      <div className="pt-24 pb-8 px-4 lg:px-16">
-        <div className="max-w-6xl mx-auto">
+      <div className="px-4 pb-8 pt-24 xl:px-0">
+        <div className="mx-auto max-w-page">
           <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 mb-8">
             {/* Brand Section */}
             <div className="lg:col-span-1">

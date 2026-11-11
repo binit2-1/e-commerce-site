@@ -30,8 +30,9 @@ const Navbar = () => {
   };
 
   return (
-    <header className="sticky top-0 z-40 border-b border-line bg-white">
-      <Container className="flex h-16 items-center gap-4 lg:h-24 lg:gap-10">
+    <header className="sticky top-0 z-40 bg-white">
+      <Container>
+        <div className="flex h-16 items-center gap-4 border-b border-line lg:h-24 lg:gap-10">
         <button
           type="button"
           aria-label={menuOpen ? "Close menu" : "Open menu"}
@@ -82,6 +83,7 @@ const Navbar = () => {
           <button type="button" aria-label="Account">
             <img src={pfp} alt="" className="h-6 w-6" />
           </button>
+        </div>
         </div>
       </Container>
 
