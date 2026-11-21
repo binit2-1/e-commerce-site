@@ -10,7 +10,7 @@ Made with the [stageshow](.agents/skills/stageshow) kit (faux UI, so they are il
 | :---: | :---: |
 | ![Choose a size, add to cart, check out](docs/demos/shop-demo.gif) | ![Pick a color and apply the filter](docs/demos/filter-demo.gif) |
 
-Run them live with `pnpm demo` (opens on `localhost:5191`).
+Run them live with `npm run demo` (opens on `localhost:5191`).
 
 ### Full walkthrough video
 
@@ -34,27 +34,27 @@ Run them live with `pnpm demo` (opens on `localhost:5191`).
 | `apps/video` | The walkthrough video (Remotion) |
 | Database | Postgres 17 in Docker |
 
-pnpm monorepo, TypeScript everywhere.
+npm workspaces monorepo, TypeScript everywhere.
 
 ## Run it
 
-Needs Node 22+, pnpm and Docker.
+Needs Node 22+ (with npm) and Docker.
 
 ```sh
 cp .env.example .env     # set JWT_SECRET to any long random string
-pnpm install
-pnpm db:up               # Postgres in Docker (host port 5433)
-pnpm db:reset            # create the tables and load demo products
-pnpm dev                 # web on :5173, api on :3000
+npm install
+npm run db:up            # Postgres in Docker (host port 5433)
+npm run db:reset         # create the tables and load demo products
+npm run dev              # web on :5173, api on :3000
 ```
 
-Other commands: `pnpm demo`, `pnpm test`, `pnpm typecheck`, `pnpm lint`, `pnpm build`, `pnpm db:down`.
+Other commands: `npm run demo`, `npm test`, `npm run typecheck`, `npm run lint`, `npm run build`, `npm run db:down`.
 
 ## How the backend is laid out
 
 ```
 apps/api/
-  db/schema.sql     # every table, hand-written (edit it, then pnpm db:reset)
+  db/schema.sql     # every table, hand-written (edit it, then npm run db:reset)
   db/seed.sql       # demo data
   src/index.ts      # app setup, mounts the routers
   src/routes/       # URL -> controller

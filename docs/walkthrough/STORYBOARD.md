@@ -32,12 +32,12 @@ docs/walkthrough/shop-walkthrough.mp4   the render
 To make it again (site, API and a fresh database must be running):
 
 ```sh
-pnpm db:reset                 # clean demo data, no users
-pnpm --filter @shop/api dev   # API on :3000
-pnpm --filter @shop/web dev --port 5190 --strictPort
-pnpm video:capture            # records every scene (about 3 min)
-pnpm video:render             # renders the MP4 (about 10 min)
-pnpm video:studio             # optional: preview and tweak in Remotion Studio
+npm run db:reset              # clean demo data, no users
+npm run dev -w @shop/api      # API on :3000
+npm run dev -w @shop/web -- --port 5190 --strictPort
+npm run video:capture         # records every scene (about 3 min)
+npm run video:render          # renders the MP4 (about 10 min)
+npm run video:studio          # optional: preview and tweak in Remotion Studio
 ```
 
 The demo account used while recording is `alex.morgan@example.com`.

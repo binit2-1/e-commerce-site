@@ -9,12 +9,12 @@
     "start": "node --env-file=../../.env dist/index.js",
     "db:schema": "docker compose -f ../../docker-compose.yml exec -T db sh -c 'psql -v ON_ERROR_STOP=1 -U $POSTGRES_USER -d $POSTGRES_DB' < db/schema.sql",
     "db:seed": "docker compose -f ../../docker-compose.yml exec -T db sh -c 'psql -v ON_ERROR_STOP=1 -U $POSTGRES_USER -d $POSTGRES_DB' < db/seed.sql",
-    "db:reset": "pnpm db:schema && pnpm db:seed",
+    "db:reset": "npm run db:schema && npm run db:seed",
     "typecheck": "tsc --noEmit",
     "lint": "tsc --noEmit"
   },
   "dependencies": {
-    "@shop/shared": "workspace:*",
+    "@shop/shared": "*",
     "bcryptjs": "^3.0.3",
     "cookie-parser": "^1.4.7",
     "cors": "^2.8.5",

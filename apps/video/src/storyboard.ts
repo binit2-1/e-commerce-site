@@ -57,7 +57,7 @@ export const TRANSITION_FRAMES = 10;
 
 export function clipOf(id: string): ClipInfo {
   const c = manifest[id];
-  if (!c) throw new Error(`No recording for scene "${id}" (run pnpm --filter @shop/video capture)`);
+  if (!c) throw new Error(`No recording for scene "${id}" (run npm run capture -w @shop/video)`);
   return c;
 }
 

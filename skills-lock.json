@@ -1,6 +1,20 @@
 {
   "version": 2,
   "skills": {
+    "docx": {
+      "source": "anthropics/skills",
+      "commit": "e4bb5d960d87126ff3b3a8af1a104b7db67560ba",
+      "sourceType": "github",
+      "skillPath": "skills/docx/SKILL.md",
+      "computedHash": "20881307726dc87b9a1b0b2f9770ae869c2753081faedb5f89249d89a94e30a2"
+    },
+    "find-skills": {
+      "source": "vercel-labs/skills",
+      "commit": "57217cf86ba38148a57af9e90d14a4c049558330",
+      "sourceType": "github",
+      "skillPath": "skills/find-skills/SKILL.md",
+      "computedHash": "7bc223e2aafbdbf6e50ea243ba6ef67fe432bb069ab439fea0390795dac0bf7f"
+    },
     "hyperframes": {
       "source": "heygen-com/hyperframes",
       "sourceType": "github",
@@ -14,6 +28,20 @@
       "skillPath": "skills/media-use/SKILL.md",
       "computedHash": "4c2b052301a3a9404db1e9ed0adbca89a5c5d60bf69758c245cd1fd249160247",
       "installMode": "copy"
+    },
+    "pdf": {
+      "source": "anthropics/skills",
+      "commit": "e4bb5d960d87126ff3b3a8af1a104b7db67560ba",
+      "sourceType": "github",
+      "skillPath": "skills/pdf/SKILL.md",
+      "computedHash": "c9c58ce1e1c334d4beb50dfe97aee27aee1d074aed17b3aa1df03b8982028200"
+    },
+    "powerpoint": {
+      "source": "IgorWarzocha/Opencode-Workflows",
+      "commit": "6444ec4aac80ede26fed1a51832d83e3f0598026",
+      "sourceType": "github",
+      "skillPath": "cowork/.opencode/skill/powerpoint/SKILL.md",
+      "computedHash": "878827b8471ea6bc587a0c51ff67ba706ea6439292231a67c05b67b44b08f6a8"
     },
     "remotion-best-practices": {
       "source": "remotion-dev/skills",

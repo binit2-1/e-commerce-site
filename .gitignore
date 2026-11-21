@@ -4,5 +4,5 @@ dist
 *.log
 .DS_Store
 .agents/*
-# walkthrough: raw scene recordings are rebuilt by pnpm video:capture
+# walkthrough: raw scene recordings are rebuilt by npm run video:capture
 apps/video/public/clips/*.mp4

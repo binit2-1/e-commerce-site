@@ -1,7 +1,7 @@
 // Records every scene of the walkthrough from the running site.
-//   1. pnpm db:reset              (fresh demo data, no users)
+//   1. npm run db:reset           (fresh demo data, no users)
 //   2. start the API and the web app (see README: SHOP_URL defaults to http://localhost:5190)
-//   3. pnpm --filter @shop/video capture
+//   3. npm run capture -w @shop/video
 // Output: public/clips/<scene>.mp4 and public/clips/manifest.json
 import { mkdirSync, writeFileSync } from "node:fs";
 import os from "node:os";

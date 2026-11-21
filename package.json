@@ -1,34 +1,39 @@
 {
   "name": "e-commerce-site",
   "private": true,
-  "packageManager": "pnpm@10.0.0",
+  "packageManager": "npm@11.19.1",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
   "engines": {
     "node": ">=22"
   },
   "scripts": {
-    "dev": "pnpm -r --parallel --filter @shop/api --filter @shop/web dev",
-    "build": "pnpm -r build",
-    "lint": "pnpm -r lint",
-    "typecheck": "pnpm -r typecheck",
+    "dev": "concurrently -n api,web -c blue,magenta \"npm run dev -w @shop/api\" \"npm run dev -w @shop/web\"",
+    "build": "npm run build --workspaces --if-present",
+    "lint": "npm run lint --workspaces --if-present",
+    "typecheck": "npm run typecheck --workspaces --if-present",
     "db:up": "docker compose up -d --wait",
     "db:down": "docker compose down",
     "test": "vitest run",
-    "db:schema": "pnpm --filter @shop/api db:schema",
-    "db:seed": "pnpm --filter @shop/api db:seed",
-    "db:reset": "pnpm --filter @shop/api db:reset",
-    "demo": "pnpm --filter @shop/demo dev",
-    "video:capture": "pnpm --filter @shop/video capture",
-    "video:render": "pnpm --filter @shop/video render",
-    "video:studio": "pnpm --filter @shop/video studio"
-  },
-  "pnpm": {
-    "onlyBuiltDependencies": [
-      "esbuild"
-    ]
+    "db:schema": "npm run db:schema -w @shop/api",
+    "db:seed": "npm run db:seed -w @shop/api",
+    "db:reset": "npm run db:reset -w @shop/api",
+    "demo": "npm run dev -w @shop/demo",
+    "video:capture": "npm run capture -w @shop/video",
+    "video:render": "npm run render -w @shop/video",
+    "video:studio": "npm run studio -w @shop/video"
   },
   "devDependencies": {
+    "concurrently": "^9.2.5",
     "playwright-core": "1.48.2",
     "postcss": "^8.5.32",
     "vitest": "^3"
+  },
+  "allowScripts": {
+    "esbuild@0.25.12": true,
+    "esbuild@0.28.1": true,
+    "esbuild@0.28.2": true
   }
 }

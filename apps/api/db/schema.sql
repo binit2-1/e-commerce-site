@@ -1,8 +1,8 @@
 -- Creates every table from scratch. DESTRUCTIVE: drops the tables first.
--- Run with: pnpm db:schema   (or pnpm db:reset to also load seed.sql)
+-- Run with: npm run db:schema   (or npm run db:reset to also load seed.sql)
 --
 -- Keep this file as the single source of truth for the database: when you add
--- a table or column, edit it here and re-run pnpm db:reset.
+-- a table or column, edit it here and re-run npm run db:reset.
 
 DROP TABLE IF EXISTS order_items, orders, cart_items, reviews, products, users, schema_migrations CASCADE;
 
